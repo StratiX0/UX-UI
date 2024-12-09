@@ -74,20 +74,4 @@ public class Player : MonoBehaviour
             Debug.Log(hit.transform.name);
         }
     }
-
-    // private void GetObject()
-    // {
-    //     RaycastHit hit;
-    //     
-    //     Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
-    //     
-    //     Vector3 worldPos  = Camera.main.ScreenToWorldPoint(mousePosition);
-    //     
-    //     RaycastHit hitInfo;
-    //     
-    //     if (Physics.Raycast(worldPos, transform.forward, out hitInfo, 1f, LayerMask.GetMask("Grabable")))
-    //     {
-    //         Debug.Log(hitInfo.transform.name);
-    //     }
-    // }
 }
