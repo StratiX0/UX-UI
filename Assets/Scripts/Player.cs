@@ -67,11 +67,9 @@ public class Player : MonoBehaviour
         
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         
-        Camera.main.ScreenToWorldPoint(mousePosition);
-        
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         
-        if (Physics.Raycast(ray, out hit, 1f))
+        if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Grabable")))
         {
             Debug.Log(hit.transform.name);
         }
