@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6080313554327316824}
   - component: {fileID: 7714915482214331588}
   - component: {fileID: 3266605818160241332}
-  m_Layer: 0
+  - component: {fileID: -209844041866307384}
+  m_Layer: 6
   m_Name: melon_Sliced_Small_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-209844041866307384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238582151481546489}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.19053802, y: 0.14467749, z: 0.28513306}
+  m_Center: {x: 0.00044155866, y: 0.024898097, z: 0.032387875}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8270378911819906255}
   - component: {fileID: 7589057048574654543}
   - component: {fileID: 1747355619511010081}
+  - component: {fileID: 5763410595051476315}
   m_Layer: 0
   m_Name: kettle_Liquid_1_Volume
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5763410595051476315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929475779754943749}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5143845, y: 1.0984105, z: 1.5143847}
+  m_Center: {x: -0.00000011920929, y: 0.549205, z: -0.00000008940697}

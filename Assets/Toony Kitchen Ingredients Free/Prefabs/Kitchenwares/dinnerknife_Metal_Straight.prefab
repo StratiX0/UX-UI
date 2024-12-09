@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7835455880646214474}
   - component: {fileID: 2567579310723981186}
   - component: {fileID: 678986175466348448}
+  - component: {fileID: 4485555063655096428}
   m_Layer: 0
   m_Name: dinnerknife_Metal_Straight
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4485555063655096428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217473226905864931}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2570065, y: 0.03995213, z: 1.9878324}
+  m_Center: {x: -0.068503216, y: 0.0019680066, z: 0.39928252}

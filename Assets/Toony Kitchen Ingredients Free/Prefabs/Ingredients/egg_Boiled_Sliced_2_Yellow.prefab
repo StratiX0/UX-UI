@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7755079831996169664}
   - component: {fileID: 2625209311050939239}
   - component: {fileID: 654608610984447119}
-  m_Layer: 0
+  - component: {fileID: -36549113914551642}
+  m_Layer: 6
   m_Name: egg_Boiled_Sliced_2_Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-36549113914551642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3236630635560037204}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.29056782, y: 0.5913466, z: 0.2054624}
+  m_Center: {x: 0.000000022351742, y: 0.022036597, z: 0.054259703}

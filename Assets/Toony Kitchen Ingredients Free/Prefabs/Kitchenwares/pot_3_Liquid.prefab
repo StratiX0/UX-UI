@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5828999876286456804}
   - component: {fileID: 1524820735850156685}
   - component: {fileID: 1497889497525769585}
+  - component: {fileID: 467900965890522389}
   m_Layer: 0
   m_Name: pot_3_Liquid
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &467900965890522389
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177155504610750904}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2497921, y: 0.500827, z: 1.2497921}
+  m_Center: {x: 0.0000009536743, y: 0.2504135, z: 0.00000023841858}

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6670816194035353318}
   - component: {fileID: 5993543108283191190}
   - component: {fileID: 7826738915898606416}
-  m_Layer: 0
+  - component: {fileID: 1576866197022261192}
+  m_Layer: 6
   m_Name: popcorn_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1576866197022261192
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263205513958126242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.35635114, y: 0.34637055, z: 0.44630826}
+  m_Center: {x: 0.013284363, y: 0.17011346, z: 0.05320441}

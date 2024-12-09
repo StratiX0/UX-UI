@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5274061884703695228}
   - component: {fileID: 9100824618186238519}
   - component: {fileID: 7076728006319841435}
-  m_Layer: 0
+  - component: {fileID: 6500013433200614596}
+  m_Layer: 6
   m_Name: cucumberSlice_Quarter_Shaved
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6500013433200614596
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075034115156774095}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.37450075, y: 0.05000012, z: 0.26481205}
+  m_Center: {x: 0.000000022351742, y: -0.000000009313226, z: 0.020622946}

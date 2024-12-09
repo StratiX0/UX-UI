@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3735829203453418450}
   - component: {fileID: 3446079245381534960}
   - component: {fileID: 4170271202409175794}
-  m_Layer: 0
+  - component: {fileID: 1029305702976030301}
+  m_Layer: 6
   m_Name: tomatoSliceWedge_Peeled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1029305702976030301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753238564761213504}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25816178, y: 0.987711, z: 0.48281887}
+  m_Center: {x: 0.00014510751, y: -0.0018299818, z: -0.03151165}

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 600565946873043018}
   - component: {fileID: 8919306040420683084}
   - component: {fileID: 8334463016004137411}
-  m_Layer: 0
+  - component: {fileID: -9017665318796803300}
+  m_Layer: 6
   m_Name: watermelon_Sliced_Small_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-9017665318796803300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277563951851294818}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.23474064, y: 0.21007967, z: 0.14581573}
+  m_Center: {x: -0.000000033527613, y: 0.036544885, z: 0.0010068528}

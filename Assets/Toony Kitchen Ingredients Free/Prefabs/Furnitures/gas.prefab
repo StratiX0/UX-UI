@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3266736721555157783}
   - component: {fileID: 2023852882925135022}
   - component: {fileID: 7425432690673890317}
+  - component: {fileID: 5688144357506031461}
   m_Layer: 0
   m_Name: gas
   m_TagString: Untagged
@@ -168,6 +169,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5688144357506031461
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470006483537069392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8998053, y: 2.1874242, z: 1.9569002}
+  m_Center: {x: 0.00000008940697, y: 1.0858567, z: 0.00000023841858}
 --- !u!1 &8706934539941568865
 GameObject:
   m_ObjectHideFlags: 0

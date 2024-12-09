@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3290139919387753007}
   - component: {fileID: 8349345209588939269}
   - component: {fileID: 6200549830063451867}
-  m_Layer: 0
+  - component: {fileID: -8980901799285953755}
+  m_Layer: 6
   m_Name: fish_Burnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-8980901799285953755
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858940992227336269}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.48257032, y: 0.8524525, z: 1.81076}
+  m_Center: {x: 0.0000017285347, y: 0.013652965, z: -0.017086595}

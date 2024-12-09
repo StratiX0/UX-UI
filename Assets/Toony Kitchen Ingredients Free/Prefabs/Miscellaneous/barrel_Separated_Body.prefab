@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 6494674466232273897}
   - component: {fileID: 2088031357399456078}
   - component: {fileID: 4475942406340093326}
+  - component: {fileID: -2657347647473977623}
   m_Layer: 0
   m_Name: barrel_Separated_Body
   m_TagString: Untagged
@@ -419,3 +420,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-2657347647473977623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986195827609301862}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0810287, y: 2, z: 2.0810287}
+  m_Center: {x: 0, y: 0, z: 0}

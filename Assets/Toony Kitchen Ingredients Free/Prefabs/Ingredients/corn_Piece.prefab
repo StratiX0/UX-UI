@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3289897608061972121}
   - component: {fileID: 5466058491288108215}
   - component: {fileID: 3132983105721872473}
-  m_Layer: 0
+  - component: {fileID: -7766392923279718922}
+  m_Layer: 6
   m_Name: corn_Piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-7766392923279718922
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842875167877187704}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.43870014, y: 0.20000017, z: 0.34747416}
+  m_Center: {x: 0.000000029802322, y: 0.100000024, z: 0.000000044703484}

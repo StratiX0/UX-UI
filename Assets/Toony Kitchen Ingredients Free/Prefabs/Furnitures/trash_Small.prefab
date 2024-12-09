@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8333988596572734706}
   - component: {fileID: 2844395127659769889}
   - component: {fileID: 5812222932961431365}
+  - component: {fileID: -2378898722790581938}
   m_Layer: 0
   m_Name: trash_Small
   m_TagString: Untagged
@@ -168,6 +169,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-2378898722790581938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970710611584260824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3052477, y: 1.7420772, z: 1.2854183}
+  m_Center: {x: 0.00000011920929, y: 0.8710385, z: 0.000000029802322}
 --- !u!1 &8753280901125327934
 GameObject:
   m_ObjectHideFlags: 0

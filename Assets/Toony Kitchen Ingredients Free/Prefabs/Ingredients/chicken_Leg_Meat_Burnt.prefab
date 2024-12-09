@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9038451147333771050}
   - component: {fileID: 979314823657898931}
   - component: {fileID: 4482902173837843301}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chicken_Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 4077270459990458118}
   - component: {fileID: 6238262334339371077}
   - component: {fileID: 506513451506132005}
-  m_Layer: 0
+  - component: {fileID: 7953395250535139978}
+  m_Layer: 6
   m_Name: chicken_Leg_Meat_Burnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,3 +168,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7953395250535139978
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5377861837995863595}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8319691, y: 0.83196914, z: 1.0314231}
+  m_Center: {x: 0, y: -0.000000014901161, z: -0.08428851}

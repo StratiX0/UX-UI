@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7760622306605922137}
   - component: {fileID: 3011966962075449102}
   - component: {fileID: 25922444542061118}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lettuceIceberg_Leaf (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7222004808922892625}
   - component: {fileID: 8890484425501962154}
   - component: {fileID: 434381880103855124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lettuceIceberg_Leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,8 @@ GameObject:
   - component: {fileID: 867789265604808198}
   - component: {fileID: 6722574346528981090}
   - component: {fileID: 5283123229937692164}
-  m_Layer: 0
+  - component: {fileID: -384399661913247386}
+  m_Layer: 6
   m_Name: lettuceIceberg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,6 +254,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-384399661913247386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284953982482233977}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1189709, y: 1.3038714, z: 1.1573249}
+  m_Center: {x: 0.04103625, y: -0.051935643, z: 0.0050165057}
 --- !u!1 &4200578862663689088
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +286,7 @@ GameObject:
   - component: {fileID: 2569584533274820274}
   - component: {fileID: 3433354780042839788}
   - component: {fileID: 3523863560919049469}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lettuceIceberg_Leaf (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +369,7 @@ GameObject:
   - component: {fileID: 2485368436225657203}
   - component: {fileID: 5399160566949514453}
   - component: {fileID: 3605176438298121917}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lettuceIceberg_Leaf (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8589350603258825225}
   - component: {fileID: 3403741707879946007}
   - component: {fileID: 5045121239420424706}
+  - component: {fileID: 1946188158760643332}
   m_Layer: 0
   m_Name: spoon_Metal_Straight
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1946188158760643332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727679156377072648}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.44999987, y: 0.21027368, z: 1.9748983}
+  m_Center: {x: 0.000000074505806, y: -0.0084865205, z: 0.09159401}

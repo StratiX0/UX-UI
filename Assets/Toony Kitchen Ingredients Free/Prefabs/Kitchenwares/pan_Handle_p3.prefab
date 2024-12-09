@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6981956783086794415}
   - component: {fileID: 868877748660974055}
   - component: {fileID: 4407620428533377897}
+  - component: {fileID: 4157593218304783274}
   m_Layer: 0
   m_Name: pan_Handle_p3
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4157593218304783274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958940690337129081}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.29817784, y: 0.34429896, z: 1.765698}
+  m_Center: {x: 0.000000923872, y: 0.10714886, z: -0.88280964}

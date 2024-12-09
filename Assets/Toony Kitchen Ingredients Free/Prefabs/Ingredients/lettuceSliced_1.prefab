@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6688445795833235632}
   - component: {fileID: 5137083731198822940}
   - component: {fileID: 7963672921286328060}
-  m_Layer: 0
+  - component: {fileID: -190102533528492994}
+  m_Layer: 6
   m_Name: lettuceSliced_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-190102533528492994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497297661465110891}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2775578, y: 0.10448927, z: 0.50010264}
+  m_Center: {x: 0.028394166, y: -0.009976389, z: 0.025048308}

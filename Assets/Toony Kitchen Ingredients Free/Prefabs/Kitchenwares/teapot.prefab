@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2780358336890455969}
   - component: {fileID: 2689238057169071205}
   - component: {fileID: 4761026849702010013}
+  - component: {fileID: -7166657555163851805}
   m_Layer: 0
   m_Name: teapot
   m_TagString: Untagged
@@ -167,3 +168,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-7166657555163851805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8363024635144164376}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4711771, y: 1.0541453, z: 1.7870955}
+  m_Center: {x: 0.00000628829, y: 0.52707005, z: 0.15795839}

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4471547804795781579}
   - component: {fileID: 9080559771871639763}
   - component: {fileID: 2581998755237043736}
-  m_Layer: 0
+  - component: {fileID: -7186034092275937313}
+  m_Layer: 6
   m_Name: groundBeef_Burnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-7186034092275937313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592684031479428191}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 0.2000007, z: 1.2}
+  m_Center: {x: 0, y: -0.000000011175871, z: 0}

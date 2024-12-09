@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +5,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private InputActionReference movement;
     [SerializeField] private InputActionReference rotation;
+    [SerializeField] private InputActionReference mouseClick;
+    private float move;
+    private float rotate;
+    private float click;
+    
     
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
@@ -16,12 +18,14 @@ public class Player : MonoBehaviour
     {
         movement.action.Enable();
         rotation.action.Enable();
+        mouseClick.action.Enable();
     }
     
     private void OnDisable()
     {
         movement.action.Disable();
         rotation.action.Disable();
+        mouseClick.action.Disable();
     }
 
     // Start is called before the first frame update
@@ -33,11 +37,59 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float move = movement.action.ReadValue<float>();
-        float rotate = rotation.action.ReadValue<float>();
+        GetInputs();
+
+        Move();
         
-        transform.Translate(Vector3.forward * (move * speed * Time.deltaTime));
-        transform.Rotate(Vector3.up * (rotate * rotationSpeed * Time.deltaTime));
+        if (click > 0)
+        {
+            GetObject();
+        }
         
     }
+
+    private void GetInputs()
+    {
+        move = movement.action.ReadValue<float>();
+        rotate = rotation.action.ReadValue<float>();
+        click = mouseClick.action.ReadValue<float>();
+    }
+    
+    private void Move()
+    {
+        transform.Translate(Vector3.forward * (move * speed * Time.deltaTime));
+        transform.Rotate(Vector3.up * (rotate * rotationSpeed * Time.deltaTime));
+    }
+    
+    private void GetObject()
+    {
+        RaycastHit hit;
+        
+        Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
+        
+        Camera.main.ScreenToWorldPoint(mousePosition);
+        
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        
+        if (Physics.Raycast(ray, out hit, 1f))
+        {
+            Debug.Log(hit.transform.name);
+        }
+    }
+
+    // private void GetObject()
+    // {
+    //     RaycastHit hit;
+    //     
+    //     Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
+    //     
+    //     Vector3 worldPos  = Camera.main.ScreenToWorldPoint(mousePosition);
+    //     
+    //     RaycastHit hitInfo;
+    //     
+    //     if (Physics.Raycast(worldPos, transform.forward, out hitInfo, 1f, LayerMask.GetMask("Grabable")))
+    //     {
+    //         Debug.Log(hitInfo.transform.name);
+    //     }
+    // }
 }
