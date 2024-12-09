@@ -26,7 +26,7 @@
             ],
             "bindings": [
                 {
-                    "name": "1D Axis",
+                    "name": "Forward-BackWard",
                     "id": "6919b06c-0940-4b78-97d5-59bc113b3d3a",
                     "path": "1DAxis",
                     "interactions": "",
@@ -51,6 +51,28 @@
                     "name": "positive",
                     "id": "321b1c53-d2a0-43b9-bca7-cd2675a9ff33",
                     "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "ac24babf-3773-4537-8242-fc42271dcb0d",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5c7a5949-7d4c-484b-8d36-34f96520f8da",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -84,6 +106,28 @@
                     "name": "positive",
                     "id": "e3d23356-4bd8-450c-b2b7-ced7a5740d18",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "5673d3e6-a195-476f-b6be-df3efd193de5",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "6171defd-f652-467c-b415-d0a0ff7c0dd4",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
