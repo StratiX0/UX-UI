@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Input Actions")]
     [SerializeField] private InputActionReference movement;
     [SerializeField] private InputActionReference rotation;
     [SerializeField] private InputActionReference mouseClick;
@@ -10,9 +11,12 @@ public class Player : MonoBehaviour
     private float rotate;
     private float click;
     
-    
+    [Header("Movement Settings")]
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
+    
+    [Header("References")]
+    [SerializeField] private Canvas objectCanvas;
     
     private void OnEnable()
     {
@@ -72,6 +76,11 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Grabable")))
         {
             Debug.Log(hit.transform.name);
+            
+            objectCanvas.gameObject.SetActive(true);
+            objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(hit.transform.position);
+            
+            // hit.transform.SetParent(transform);
         }
     }
 }
