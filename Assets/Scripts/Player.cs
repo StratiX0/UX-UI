@@ -83,4 +83,26 @@ public class Player : MonoBehaviour
             // hit.transform.SetParent(transform);
         }
     }
+    
+    private void HighlightObject()
+    {
+        RaycastHit hit;
+        
+        Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
+        
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        
+        if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Grabable")))
+        {
+            Debug.Log(hit.transform.name);
+            
+            objectCanvas.gameObject.SetActive(true);
+            
+            
+            
+            // objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(hit.transform.position);
+            
+            // hit.transform.SetParent(transform);
+        }
+    }
 }
