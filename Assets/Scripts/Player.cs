@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using LitMotion;
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class Player : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private Canvas objectCanvas;
+    [SerializeField] private Material highlightMat;
+    private bool isAnimating;
+    private Vector3 selectedObject;
     
     private void OnEnable()
     {
@@ -35,11 +40,12 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        isAnimating = false;
+        selectedObject = new Vector3(9999999, 9999999, 9999999);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         GetInputs();
 
@@ -49,6 +55,8 @@ public class Player : MonoBehaviour
         {
             GetObject();
         }
+        
+        HighlightObject();
         
     }
 
@@ -87,22 +95,20 @@ public class Player : MonoBehaviour
     private void HighlightObject()
     {
         RaycastHit hit;
-        
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
-        
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-        
+
         if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Grabable")))
         {
-            Debug.Log(hit.transform.name);
-            
             objectCanvas.gameObject.SetActive(true);
-            
-            
-            
-            // objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(hit.transform.position);
-            
-            // hit.transform.SetParent(transform);
+
+            if (!isAnimating)
+            {
+                LMotion.Create(0f, 0.03f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x));
+                isAnimating = true;
+                Debug.Log("Animating");
+                selectedObject = hit.transform.position;
+            }
         }
     }
 }

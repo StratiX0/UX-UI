@@ -1763,6 +1763,7 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 120
   objectCanvas: {fileID: 676487946}
+  highlightMat: {fileID: 2100000, guid: 47deae1ed2410b746bb7db35cff0a550, type: 2}
 --- !u!136 &938990582
 CapsuleCollider:
   m_ObjectHideFlags: 0
