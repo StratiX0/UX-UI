@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using LitMotion;
@@ -21,7 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Canvas objectCanvas;
     [SerializeField] private Material highlightMat;
     private bool isAnimating;
-    private Vector3 selectedObject;
+    private Vector3 selectedObjectPos;
+    private CompositeMotionHandle compMotionHandle;
     
     private void OnEnable()
     {
@@ -41,7 +43,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         isAnimating = false;
-        selectedObject = new Vector3(9999999, 9999999, 9999999);
+        selectedObjectPos = new Vector3(9999999, 9999999, 9999999);
+        compMotionHandle = new CompositeMotionHandle();
     }
 
     // Update is called once per frame
@@ -50,11 +53,6 @@ public class Player : MonoBehaviour
         GetInputs();
 
         Move();
-        
-        if (click > 0)
-        {
-            GetObject();
-        }
         
         HighlightObject();
         
@@ -73,42 +71,35 @@ public class Player : MonoBehaviour
         transform.Rotate(Vector3.up * (rotate * rotationSpeed * Time.deltaTime));
     }
     
-    private void GetObject()
-    {
-        RaycastHit hit;
-        
-        Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
-        
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-        
-        if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Grabable")))
-        {
-            Debug.Log(hit.transform.name);
-            
-            objectCanvas.gameObject.SetActive(true);
-            objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(hit.transform.position);
-            
-            // hit.transform.SetParent(transform);
-        }
-    }
-    
     private void HighlightObject()
     {
         RaycastHit hit;
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-
+        
+        
         if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Grabable")))
         {
             objectCanvas.gameObject.SetActive(true);
-
+            highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
+            selectedObjectPos = hit.transform.position;
+            
             if (!isAnimating)
             {
-                LMotion.Create(0f, 0.03f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x));
+                LMotion.Create(0f, 0.03f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
                 isAnimating = true;
+                selectedObjectPos = hit.transform.position;
                 Debug.Log("Animating");
-                selectedObject = hit.transform.position;
             }
+        }
+
+        else if (Vector3.Distance(transform.position, selectedObjectPos) > 2f && isAnimating)
+        {
+            compMotionHandle.Cancel();
+            compMotionHandle.Clear();
+            highlightMat.SetFloat("_Thickness", 0);
+            isAnimating = false;
+            Debug.Log("Canceling");
         }
     }
 }
