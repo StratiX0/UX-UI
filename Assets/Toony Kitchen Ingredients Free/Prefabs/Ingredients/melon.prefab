@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4424726679928509150}
   - component: {fileID: 5345381329443430120}
   - component: {fileID: 131778488437705424}
-  - component: {fileID: 242513188870392678}
+  - component: {fileID: 1379812294354766869}
   m_Layer: 6
   m_Name: melon
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &242513188870392678
-BoxCollider:
+--- !u!135 &1379812294354766869
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,5 +104,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3575506, y: 1.4, z: 1.3575506}
+  m_Radius: 0.7
   m_Center: {x: 0.000000029802322, y: 0, z: 0}
