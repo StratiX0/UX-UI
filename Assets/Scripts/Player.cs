@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movement;
     [SerializeField] private InputActionReference rotation;
-    [SerializeField] private InputActionReference mouseClick;
+    [SerializeField] private InputActionReference leftClick;
     private float move;
     private float rotate;
     private float click;
@@ -23,30 +23,30 @@ public class Player : MonoBehaviour
     [SerializeField] private Canvas objectCanvas;
     
     [Header("Objects Settings")]
-    private Material objectMat;
     [SerializeField] private Material highlightMat;
+    private Material objectMat;
     private bool isAnimating;
     private Vector3 selectedObjectPos;
     private CompositeMotionHandle compMotionHandle;
     private GameObject selectedObject;
     private GameObject[] objectsInHands;
     [SerializeField] private Camera[] camerasObject;
-    [SerializeField] private RenderTexture[] objectsRenderTextures;
-    [SerializeField] private Material[] targetMaterials;
-    [SerializeField] private RawImage[] objectCanvasImage;
+    private bool isPlacingObj;
+    private int placingObjIndex;
+    [SerializeField] private GameObject[] placingMenus;
     
     private void OnEnable()
     {
         movement.action.Enable();
         rotation.action.Enable();
-        mouseClick.action.Enable();
+        leftClick.action.Enable();
     }
     
     private void OnDisable()
     {
         movement.action.Disable();
         rotation.action.Disable();
-        mouseClick.action.Disable();
+        leftClick.action.Disable();
     }
 
     // Start is called before the first frame update
@@ -67,13 +67,18 @@ public class Player : MonoBehaviour
         
         HighlightObject();
         
+        if (isPlacingObj)
+        {
+            PlaceObject(placingObjIndex);
+        }
+        
     }
 
     private void GetInputs()
     {
         move = movement.action.ReadValue<float>();
         rotate = rotation.action.ReadValue<float>();
-        click = mouseClick.action.ReadValue<float>();
+        click = leftClick.action.ReadValue<float>();
     }
     
     private void Move()
@@ -91,7 +96,8 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Grabbable")))
         {
             objectMat = hit.transform.GetComponent<MeshRenderer>().materials[0];
-            objectMat.color = Color.gray;
+            objectMat.EnableKeyword("_EMISSION");
+            objectMat.SetColor("_EmissionColor", new Color(1, 1, 1, 1) * 0.25f);
             
             highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
             selectedObjectPos = hit.transform.position;
@@ -114,7 +120,11 @@ public class Player : MonoBehaviour
         
         else if (!Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Grabbable")))
         {
-            if (objectMat != null) objectMat.color = Color.white;
+            if (objectMat != null)
+            {
+                objectMat.SetColor("_EmissionColor", Color.black);
+                objectMat.DisableKeyword("_EMISSION"); 
+            }
         }
 
         if (Vector3.Distance(transform.position, selectedObjectPos) > 2f)
@@ -160,5 +170,37 @@ public class Player : MonoBehaviour
         
         compMotionHandle.Cancel();
         highlightMat.SetFloat("_Thickness", 0);
+    }
+    
+    public void IsPlacingObject(bool state)
+    {
+        isPlacingObj = true;
+    }
+    public void IsPlacingIndex(int objIndex)
+    {
+        placingObjIndex = objIndex;
+    }
+
+    private void PlaceObject(int objIndex)
+    {
+        if (!isPlacingObj) return;
+        Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
+        int excludeLayer1 = LayerMask.GetMask("UI");
+        
+        if (click > 0 && Physics.Raycast(ray, out RaycastHit hit, 3f))
+        {
+            objectsInHands[objIndex].transform.position = hit.point;
+            objectsInHands[objIndex].transform.SetParent(null);
+            objectsInHands[objIndex].layer = LayerMask.NameToLayer("Grabbable");
+            foreach (var child in objectsInHands[objIndex].transform.gameObject.GetComponentsInChildren<Transform>())
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("Grabbable");
+            }
+            objectsInHands[objIndex] = null;
+            isPlacingObj = false;
+            placingMenus[objIndex].SetActive(false);
+        }
     }
 }
