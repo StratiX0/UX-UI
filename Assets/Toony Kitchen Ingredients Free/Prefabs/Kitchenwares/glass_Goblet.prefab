@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 404207271463595880}
   - component: {fileID: 6313780070164936420}
   - component: {fileID: 4982120594779318123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: glass_Goblet_Liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1438760410779726758}
   - component: {fileID: 3398600691583039138}
   - component: {fileID: 5668258698488499795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: glass_Goblet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

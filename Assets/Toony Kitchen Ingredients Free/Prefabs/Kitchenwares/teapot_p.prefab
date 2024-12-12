@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4749721654351072678}
   - component: {fileID: 7089724892834348353}
   - component: {fileID: 8179497515484716383}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: teapot_p
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6358057574820096901}
   - component: {fileID: 4284846870143518162}
   - component: {fileID: 8461794535239155465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: teapot_Handle_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 2110558732665012047}
   - component: {fileID: 3572968309123333778}
   - component: {fileID: 5916904352159592299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: teapot_Handle_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 5873438670435368397}
   - component: {fileID: 4825056379116651497}
   - component: {fileID: 8944751410857392022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: teapot_Lid_p
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 4256402027401960248}
   - component: {fileID: 4827508996002210787}
   - component: {fileID: 3132646398944492603}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: teapot_Handle_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 2107054142076176445}
   - component: {fileID: 6191468936704097876}
   - component: {fileID: 301175748582848055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: teapot_Handle_3_Parts
   m_TagString: Untagged
   m_Icon: {fileID: 0}

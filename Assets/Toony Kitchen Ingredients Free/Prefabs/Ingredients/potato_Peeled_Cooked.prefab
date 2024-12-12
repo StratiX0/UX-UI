@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7942535690330253984}
   - component: {fileID: 5417801589084566767}
   - component: {fileID: -1895595822906029287}
+  - component: {fileID: -5210798143130836558}
   m_Layer: 6
   m_Name: potato_Peeled_Cooked
   m_TagString: Untagged
@@ -106,3 +107,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0696602, y: 0.9808924, z: 1.5999999}
   m_Center: {x: 0.00043705106, y: -0.0024645776, z: -0.000000029802322}
+--- !u!54 &-5210798143130836558
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189876703429858370}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4817910474053084377}
   - component: {fileID: 1244966921302388561}
   - component: {fileID: -334439615023937051}
+  - component: {fileID: -5077413522420232346}
   m_Layer: 6
   m_Name: potato_Chip_2_Burnt
   m_TagString: Untagged
@@ -106,3 +107,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5216925, y: 0.1682531, z: 0.21413064}
   m_Center: {x: -0.0015233457, y: 0.00016534701, z: -0.0051446557}
+--- !u!54 &-5077413522420232346
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4489635816041461496}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5736966568202186706}
   - component: {fileID: 3580504770339482966}
   - component: {fileID: -4745572735027977911}
+  - component: {fileID: 4984958091941378317}
   m_Layer: 6
   m_Name: lettuceSliced_0
   m_TagString: Untagged
@@ -106,3 +107,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4433237, y: 0.124651894, z: 0.5}
   m_Center: {x: -0.000000014901161, y: -0.014366306, z: 0.0002161935}
+--- !u!54 &4984958091941378317
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7985532290024336113}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

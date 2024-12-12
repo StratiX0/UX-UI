@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1166868947413241745}
   - component: {fileID: 3881099405903172440}
   - component: {fileID: 172349127320380066}
+  - component: {fileID: 2358353823092410814}
   m_Layer: 6
   m_Name: popcorn_3
   m_TagString: Untagged
@@ -106,3 +107,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35416657, y: 0.36153618, z: 0.46671587}
   m_Center: {x: -0.033608258, y: 0.17851602, z: 0.0032758191}
+--- !u!54 &2358353823092410814
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494536704598452112}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1327606621963322673}
   - component: {fileID: 4460758260441237000}
   - component: {fileID: -2372007260096071482}
+  - component: {fileID: 7218143932043882812}
   m_Layer: 6
   m_Name: burgerBun_Burnt
   m_TagString: Untagged
@@ -106,3 +107,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3999999, y: 0.70367783, z: 1.4}
   m_Center: {x: 0.000000029802322, y: 0.048402727, z: 0}
+--- !u!54 &7218143932043882812
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462062506148495717}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

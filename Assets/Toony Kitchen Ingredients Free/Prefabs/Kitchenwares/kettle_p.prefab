@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2878375045888620639}
   - component: {fileID: 3539576303824783432}
   - component: {fileID: 3721155759645899161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kettle_Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5869479221821875463}
   - component: {fileID: 4981279167268225230}
   - component: {fileID: 308711878572937787}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kettle_Handle_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4638485718607561289}
   - component: {fileID: 4061294262296282053}
   - component: {fileID: -2265045008815710833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kettle_p
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 8313259343174885754}
   - component: {fileID: 5398138388104624270}
   - component: {fileID: 3529124690232229844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kettle_Whistle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 6999086230193552390}
   - component: {fileID: 1093827224206549986}
   - component: {fileID: 4167443803134543713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kettle_Handle_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 8223018377153096153}
   - component: {fileID: 5328054350781596524}
   - component: {fileID: 6588607649893420973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kettle_Handle_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

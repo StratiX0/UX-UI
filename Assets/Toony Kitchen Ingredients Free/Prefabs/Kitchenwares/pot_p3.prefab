@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7230563837523602637}
   - component: {fileID: 7531943213048191994}
   - component: {fileID: 7360685134786148204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pot_Lid_p3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4724678877070303497}
   - component: {fileID: 7263002655308853217}
   - component: {fileID: -5983678687652383309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pot_p3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

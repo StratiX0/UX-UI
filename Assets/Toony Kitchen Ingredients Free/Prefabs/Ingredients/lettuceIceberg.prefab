@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 6722574346528981090}
   - component: {fileID: 5283123229937692164}
   - component: {fileID: -384399661913247386}
+  - component: {fileID: -5139304191621036207}
   m_Layer: 6
   m_Name: lettuceIceberg
   m_TagString: Untagged
@@ -276,6 +277,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1189709, y: 1.3038714, z: 1.1573249}
   m_Center: {x: 0.04103625, y: -0.051935643, z: 0.0050165057}
+--- !u!54 &-5139304191621036207
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284953982482233977}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4200578862663689088
 GameObject:
   m_ObjectHideFlags: 0

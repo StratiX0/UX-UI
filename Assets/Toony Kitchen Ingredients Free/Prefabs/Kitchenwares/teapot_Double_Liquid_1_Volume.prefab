@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8180739734645683861}
   - component: {fileID: 8660192131240151731}
   - component: {fileID: 5913292840986681645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: teapot_Double_Liquid_1_Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}

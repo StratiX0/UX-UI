@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6285287022055826258}
   - component: {fileID: 9081471476882073334}
   - component: {fileID: 9097865913421327804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: kettle_Liquid_Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}

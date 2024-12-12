@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8938604645436273796}
   - component: {fileID: 8743258236802079879}
   - component: {fileID: 9221491379853572833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pot_2_Liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

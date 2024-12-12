@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8083083356221578573}
   - component: {fileID: 1915119504368851459}
   - component: {fileID: 1199486849246069176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 6248299175000879593}
   - component: {fileID: 4666578949053472888}
   - component: {fileID: 4260845914527377980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: glass_Liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

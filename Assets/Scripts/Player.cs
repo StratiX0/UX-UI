@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private GameObject selectedObject;
     private GameObject[] objectsInHands;
     [SerializeField] private Camera[] camerasObject;
-    private bool isPlacingObj;
+    [SerializeField] private bool isPlacingObj;
     private int placingObjIndex;
     [SerializeField] private GameObject[] placingMenus;
     
@@ -95,11 +95,8 @@ public class Player : MonoBehaviour
         
         if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Grabbable")))
         {
-            objectMat = hit.transform.GetComponent<MeshRenderer>().materials[0];
-            objectMat.EnableKeyword("_EMISSION");
-            objectMat.SetColor("_EmissionColor", new Color(1, 1, 1, 1) * 0.25f);
+            HighlightMat(hit.transform, true);
             
-            highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
             selectedObjectPos = hit.transform.position;
 
             if (click > 0)
@@ -122,8 +119,7 @@ public class Player : MonoBehaviour
         {
             if (objectMat != null)
             {
-                objectMat.SetColor("_EmissionColor", Color.black);
-                objectMat.DisableKeyword("_EMISSION"); 
+                HighlightMat(hit.transform, false);
             }
         }
 
@@ -142,9 +138,28 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    private void HighlightMat(Transform hoverObject, bool highlight)
+    {
+        if (highlight)
+        {
+            objectMat = hoverObject.GetComponent<MeshRenderer>().materials[0];
+            objectMat.EnableKeyword("_EMISSION");
+            objectMat.SetColor("_EmissionColor", new Color(1, 1, 1, 1) * 0.25f);
+            
+            highlightMat = hoverObject.GetComponent<MeshRenderer>().materials[1];
+        }
+        else
+        {
+            objectMat.SetColor("_EmissionColor", Color.black);
+            objectMat.DisableKeyword("_EMISSION"); 
+        }
+
+    }
     
     private void HandlePickup(GameObject pickedObject, int hand)
     {
+        pickedObject.GetComponent<Rigidbody>().useGravity = false;
         pickedObject.transform.SetParent(transform);
         pickedObject.transform.localPosition = camerasObject[hand].transform.localPosition - new Vector3(2, 2, 0);
         camerasObject[hand].transform.LookAt(pickedObject.transform);
@@ -174,7 +189,7 @@ public class Player : MonoBehaviour
     
     public void IsPlacingObject(bool state)
     {
-        isPlacingObj = true;
+        isPlacingObj = state;
     }
     public void IsPlacingIndex(int objIndex)
     {
@@ -198,6 +213,7 @@ public class Player : MonoBehaviour
             {
                 child.gameObject.layer = LayerMask.NameToLayer("Grabbable");
             }
+            objectsInHands[objIndex].GetComponent<Rigidbody>().useGravity = true;
             objectsInHands[objIndex] = null;
             isPlacingObj = false;
             placingMenus[objIndex].SetActive(false);

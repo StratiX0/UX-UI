@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7353869816623901441}
   - component: {fileID: 3072730654760886596}
   - component: {fileID: 607212069150654343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pan_Handle_p1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2482760473643979430}
   - component: {fileID: 6169649534287819673}
   - component: {fileID: 5793673120443487854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pan_p1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

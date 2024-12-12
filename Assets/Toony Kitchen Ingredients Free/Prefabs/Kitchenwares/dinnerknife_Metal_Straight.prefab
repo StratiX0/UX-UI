@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2567579310723981186}
   - component: {fileID: 678986175466348448}
   - component: {fileID: 4485555063655096428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dinnerknife_Metal_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6469138008276615276}
   - component: {fileID: 8162522048869279105}
   - component: {fileID: 7915037207282730820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bowl_1_Liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
