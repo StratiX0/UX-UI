@@ -1,26 +1,23 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using TMPro;
+using Newtonsoft.Json;
 
 public class Book : MonoBehaviour
 {
-    public List<List<string>> recipesList;
-    public List<string> currentRecipe;
-    public TextMeshProUGUI[] titleText;
-    public TextMeshProUGUI[] ingredientsText;
-    public TextMeshProUGUI[] descriptionText;
+    private List<List<string>> recipesList;
+    [SerializeField] private List<string> currentRecipe;
+    [SerializeField] private TextMeshProUGUI[] titleText;
+    [SerializeField] private TextMeshProUGUI[] ingredientsText;
+    [SerializeField] private TextMeshProUGUI[] descriptionText;
     
     private void Start()
     {
         recipesList = new List<List<string>>();
-        AddRecipe("Vroum", "1 cup Vroum, 10L Vroum, 4 Vroum", "Mix all ingredients together and cook on an engine.");
-        AddRecipe("Pancakes", "1 cup flour, 1 cup milk, 1 egg", "Mix all ingredients together and cook on a pan.");
-        AddRecipe("Omelette", "2 eggs, 1/4 cup milk, 1/4 cup cheese, 1/4 cup ham", "Mix all ingredients together and cook on a pan.");
-        AddRecipe("French Toast", "2 eggs, 1/4 cup milk, 1/4 tsp cinnamon, 2 slices bread", "Mix all ingredients together and cook on a pan.");
-        
-        currentRecipe = GetRecipes("Vroum");
+        LoadRecipe();
+        currentRecipe = GetRecipesByIndex(0);
         
         FormatRecipe(currentRecipe);
     }
@@ -34,11 +31,11 @@ public class Book : MonoBehaviour
         recipesList.Add(recipe);
     }
     
-    public List<string> GetRecipes(string title)
+    public List<string> GetRecipesByTitle(string title)
     {
         foreach (var recipe in recipesList)
         {
-            if (recipe[0] == title)
+            if (recipe[0].Contains(title))
             {
                 List<string> cookList = new List<string>();
                 cookList.Add(recipe[0]);
@@ -47,6 +44,21 @@ public class Book : MonoBehaviour
                 return cookList;
             }
         }
+        return null;
+    }
+    
+    public List<string> GetRecipesByIndex(int index)
+    {
+        if (index >= 0 && index < recipesList.Count)
+        {
+            List<string> recipe = recipesList[index];
+            List<string> cookList = new List<string>();
+            cookList.Add(recipe[0]);
+            cookList.Add(recipe[1]);
+            cookList.Add(recipe[2]);
+            return cookList;
+        }
+        
         return null;
     }
     
@@ -97,6 +109,34 @@ public class Book : MonoBehaviour
         foreach (var text in descriptionText)
         {
             text.text = $"<b>Description:</b> {recipe[2]}";
+        }
+    }
+    
+    [Serializable]
+    public class RecipeData
+    {
+        public string title;
+        public List<string> ingredients;
+        public string description;
+    }
+    
+    private void LoadRecipe()
+    {
+        string filePath = Path.Combine(Application.dataPath, "Scripts/Recipes.json");
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            List<RecipeData> recipes = JsonConvert.DeserializeObject<List<RecipeData>>(json);
+
+            foreach (var recipe in recipes)
+            {
+                string ingredients = string.Join(", ", recipe.ingredients);
+                AddRecipe(recipe.title, ingredients, recipe.description);
+            }
+        }
+        else
+        {
+            Debug.LogError("Le fichier Recipes.json est introuvable.");
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿[
+  {
+    "title": "Spaghetti Carbonara",
+    "ingredients": [
+      "200g pasta",
+      "100g bacon",
+      "2 eggs",
+      "50g parmesan",
+      "1 garlic clove",
+      "Salt and pepper"
+    ],
+    "description": "Cook pasta. Fry bacon and garlic. Beat eggs with parmesan, salt, and pepper. Mix pasta, bacon, and egg mixture. Serve immediately."
+  },
+  {
+    "title": "Quinoa Salad with Grilled Veggies",
+    "ingredients": [
+      "150g quinoa",
+      "1 zucchini",
+      "1 red pepper",
+      "1 eggplant",
+      "1 red onion",
+      "2 tbsp olive oil",
+      "Salt and pepper",
+      "Lemon juice"
+    ],
+    "description": "Cook quinoa. Grill chopped veggies with oil, salt, and pepper. Mix with quinoa and add lemon juice."
+  },
+  {
+    "title": "Apple Tart",
+    "ingredients": [
+      "1 shortcrust pastry",
+      "4 apples",
+      "50g sugar",
+      "30g butter",
+      "1 tbsp cinnamon"
+    ],
+    "description": "Preheat oven to 180°C. Spread pastry in tart pan. Slice apples and arrange on pastry. Sprinkle with sugar, cinnamon, and butter. Bake for 30-35 minutes."
+  }
+]
