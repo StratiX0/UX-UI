@@ -1,15 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using LitMotion;
-using Unity.VisualScripting;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
-using Button = UnityEngine.UIElements.Button;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
+    
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movement;
     [SerializeField] private InputActionReference rotation;
@@ -41,7 +40,12 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isPlacingObj;
     private int placingObjIndex;
     [SerializeField] private GameObject[] placingMenus;
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void OnEnable()
     {
         movement.action.Enable();
@@ -150,7 +154,7 @@ public class Player : MonoBehaviour
     
     private void HandlePickup(GameObject pickedObject, int hand)
     {
-        pickedObject.GetComponent<Rigidbody>().useGravity = false;
+        pickedObject.GetComponent<Rigidbody>().isKinematic = true;
         pickedObject.transform.SetParent(transform);
         pickedObject.transform.localPosition = camerasObject[hand].transform.localPosition - new Vector3(2, 2, 0);
         camerasObject[hand].transform.LookAt(pickedObject.transform);
@@ -186,7 +190,6 @@ public class Player : MonoBehaviour
                 
                 selectedObject = hit.transform.gameObject;
                 containerCanvas.gameObject.SetActive(true);
-                selectedObject.GetComponent<Container>().SetPlayer(this);
                 selectedObject.GetComponent<Container>().SetCanvas(containerCanvas);
                 selectedObjectPos = hit.transform.position;
                 containerCanvas.gameObject.SetActive(true);
@@ -259,7 +262,7 @@ public class Player : MonoBehaviour
             {
                 child.gameObject.layer = LayerMask.NameToLayer("Grabbable");
             }
-            objectsInHands[objIndex].GetComponent<Rigidbody>().useGravity = true;
+            objectsInHands[objIndex].GetComponent<Rigidbody>().isKinematic = false;
             objectsInHands[objIndex] = null;
             isPlacingObj = false;
             placingMenus[objIndex].SetActive(false);

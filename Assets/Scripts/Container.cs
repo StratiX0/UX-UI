@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,12 @@ public class Container : MonoBehaviour
         Removing,
         Clearing
     }
-    
+
+    private void Awake()
+    {
+        SetPlayer();
+    }
+
     public void SetCanvas(Canvas value)
     {
         canvas = value;
@@ -31,15 +37,12 @@ public class Container : MonoBehaviour
         buttons = new List<Button>(canvas.GetComponentsInChildren<Button>());
         foreach (Button button in buttons)
         {
-            Debug.Log("Button found: " + button.name);
-            // Associer une action à chaque bouton
             button.onClick.AddListener(() => OnButtonClicked(button));
         }
     }
 
     private void OnButtonClicked(Button button)
     {
-        // Exemple d'action en fonction du nom du bouton
         switch (button.name)
         {
             case "AddButton":
@@ -114,8 +117,8 @@ public class Container : MonoBehaviour
         isLeftHand = value;
     }
 
-    public void SetPlayer(Player value)
+    public void SetPlayer()
     {
-        player = value;
+        player = Player.Instance;
     }
 }
