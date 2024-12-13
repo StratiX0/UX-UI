@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 
 public class Book : MonoBehaviour
 {
-    private List<List<string>> recipesList;
-    [SerializeField] private List<string> currentRecipe;
+    private List<Recipe> recipesList;
+    [SerializeField] private Recipe currentRecipe;
     [SerializeField] private TextMeshProUGUI[] titleText;
     [SerializeField] private TextMeshProUGUI[] ingredientsText;
     [SerializeField] private TextMeshProUGUI[] descriptionText;
@@ -19,19 +19,19 @@ public class Book : MonoBehaviour
     
     private void Start()
     {
-        recipesList = new List<List<string>>();
+        recipesList = new List<Recipe>();
         LoadRecipe();
         currentRecipe = GetRecipesByIndex(0);
         
         FormatRecipe(currentRecipe);
     }
 
-    public void AddRecipe(string title, string ingredients, string desc)
+    private void AddRecipe(string title, string ingredients, string desc)
     {
-        List<string> recipe = new List<string>();
-        recipe.Add(title);
-        recipe.Add(ingredients);
-        recipe.Add(desc);
+        Recipe recipe = Recipe.CreateInstance<Recipe>();
+        recipe.SetTitle(title);
+        recipe.SetIngredients(new List<string>(ingredients.Split(',')));
+        recipe.SetDescription(desc);
         recipesList.Add(recipe);
     }
     
@@ -39,28 +39,23 @@ public class Book : MonoBehaviour
     {
         foreach (var recipe in recipesList)
         {
-            if (recipe[0].Contains(title))
+            if (recipe.GetTitle() == title)
             {
                 List<string> cookList = new List<string>();
-                cookList.Add(recipe[0]);
-                cookList.Add(recipe[1]);
-                cookList.Add(recipe[2]);
+                cookList.Add(recipe.GetTitle());
+                cookList.Add(string.Join(",", recipe.GetIngredients()));
+                cookList.Add(recipe.GetDescription());
                 return cookList;
             }
         }
         return null;
     }
     
-    public List<string> GetRecipesByIndex(int index)
+    private Recipe GetRecipesByIndex(int index)
     {
         if (index >= 0 && index < recipesList.Count)
         {
-            List<string> recipe = recipesList[index];
-            List<string> cookList = new List<string>();
-            cookList.Add(recipe[0]);
-            cookList.Add(recipe[1]);
-            cookList.Add(recipe[2]);
-            return cookList;
+            return recipesList[index];
         }
         
         return null;
@@ -77,7 +72,7 @@ public class Book : MonoBehaviour
         
         else if (index == 0)
         {
-            currentRecipe = recipesList[recipesList.Count - 1];
+            currentRecipe = recipesList[^1];
             FormatRecipe(currentRecipe);
         }
     }
@@ -98,21 +93,21 @@ public class Book : MonoBehaviour
         }
     }
     
-    private void FormatRecipe(List<string> recipe)
+    private void FormatRecipe(Recipe recipe)
     {
         foreach (var text in titleText)
         {
-            text.text = $"<b>{recipe[0]}</b>";
+            text.text = $"<b>{recipe.GetTitle()}</b>";
         }
 
         foreach (var text in ingredientsText)
         {
-            text.text = $"<b>Ingredients:</b> {recipe[1]}";
+            text.text = $"<b>Ingredients:</b> {string.Join(", ", recipe.GetIngredients())}";
         }
         
         foreach (var text in descriptionText)
         {
-            text.text = $"<b>Description:</b> {recipe[2]}";
+            text.text = $"<b>Description:</b> {recipe.GetDescription()}";
         }
     }
     
@@ -134,7 +129,7 @@ public class Book : MonoBehaviour
 
             foreach (var recipe in recipes)
             {
-                string ingredients = string.Join(", ", recipe.ingredients);
+                string ingredients = string.Join(",", recipe.ingredients);
                 AddRecipe(recipe.title, ingredients, recipe.description);
             }
         }
@@ -180,9 +175,9 @@ public class Book : MonoBehaviour
         foreach (var recipe in recipesList)
         {
             RecipeData data = new RecipeData();
-            data.title = recipe[0];
-            data.ingredients = new List<string>(recipe[1].Split(','));
-            data.description = recipe[2];
+            data.title = recipe.GetTitle();
+            data.ingredients = recipe.GetIngredients();
+            data.description = recipe.GetDescription();
             recipes.Add(data);
         }
 
