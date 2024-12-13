@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using LitMotion;
+using Unity.VisualScripting;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Button = UnityEngine.UIElements.Button;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +24,7 @@ public class Player : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private Canvas objectCanvas;
+    [SerializeField] private Canvas containerCanvas;
     
     [Header("Objects Settings")]
     [SerializeField] private Material highlightMat;
@@ -29,9 +33,10 @@ public class Player : MonoBehaviour
     private Vector3 selectedObjectPos;
     private CompositeMotionHandle compMotionHandle;
     private GameObject lastHoveredObject;
+    private GameObject lastHoveredContainer;
     private GameObject lastHoveredStorage;
     private GameObject selectedObject;
-    private GameObject[] objectsInHands;
+    public GameObject[] objectsInHands;
     [SerializeField] private Camera[] camerasObject;
     [SerializeField] private bool isPlacingObj;
     private int placingObjIndex;
@@ -68,6 +73,7 @@ public class Player : MonoBehaviour
         Move();
         
         ObjectManagement();
+        ContainerManagement();
         StorageManagement();
         
         if (isPlacingObj)
@@ -136,10 +142,9 @@ public class Player : MonoBehaviour
                 compMotionHandle.Clear();
                 highlightMat.SetFloat("_Thickness", 0);
                 
-                objectCanvas.gameObject.SetActive(false);
-                
                 isAnimating = false;
             }
+            objectCanvas.gameObject.SetActive(false);
         }
     }
     
@@ -156,6 +161,61 @@ public class Player : MonoBehaviour
         }
         objectsInHands[hand] = pickedObject;
         Debug.Log($"Picking up with {(hand == 0 ? "left" : "right")} hand");
+    }
+    
+    private void ContainerManagement()
+    {
+        RaycastHit hit;
+        Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        
+        if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Container")))
+        {
+            Highlight(hit.transform.gameObject, true);
+            highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
+            
+            selectedObjectPos = hit.transform.position;
+
+            if (click > 0)
+            {
+                if (!isAnimating)
+                {
+                    LMotion.Create(0f, 0.03f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
+                    isAnimating = true;
+                }
+                
+                selectedObject = hit.transform.gameObject;
+                containerCanvas.gameObject.SetActive(true);
+                selectedObject.GetComponent<Container>().SetPlayer(this);
+                selectedObject.GetComponent<Container>().SetCanvas(containerCanvas);
+                selectedObjectPos = hit.transform.position;
+                containerCanvas.gameObject.SetActive(true);
+                containerCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
+                containerCanvas.transform.rotation = Quaternion.LookRotation(containerCanvas.transform.position - Camera.main.transform.position);
+            }
+        }
+        
+        else if (!Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Container")))
+        {
+            if (hoveredObjectMats != null)
+            {
+                Highlight(lastHoveredContainer, false);
+            }
+        }
+
+        if (Vector3.Distance(transform.position, selectedObjectPos) > 2f)
+        {
+            if (isAnimating)
+            {
+                selectedObject = null;
+                compMotionHandle.Cancel();
+                compMotionHandle.Clear();
+                highlightMat.SetFloat("_Thickness", 0);
+                
+                isAnimating = false;
+            }
+            containerCanvas.gameObject.SetActive(false);
+        }
     }
 
     public void PickupHand(int hand)
@@ -251,6 +311,11 @@ public class Player : MonoBehaviour
         if (hoverObject.layer == LayerMask.NameToLayer("Storage"))
         {
             lastHoveredStorage = hoverObject.gameObject;
+        }
+
+        if (hoverObject.layer == LayerMask.NameToLayer("Container"))
+        {
+            lastHoveredContainer = hoverObject.gameObject;
         }
     }
 

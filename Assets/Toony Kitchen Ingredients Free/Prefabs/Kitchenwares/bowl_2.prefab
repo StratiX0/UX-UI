@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3872496713530931682}
   - component: {fileID: 4447803536822225150}
   - component: {fileID: -3782957049345668149}
+  - component: {fileID: -2823796305638699845}
   m_Layer: 8
   m_Name: bowl_2
   m_TagString: Untagged
@@ -63,6 +64,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b3737475b3717db4cabb07581e28a3bf, type: 2}
+  - {fileID: 2100000, guid: 47deae1ed2410b746bb7db35cff0a550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,3 +107,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1381347, y: 0.2469859, z: 1.1381346}
   m_Center: {x: 0.000090807676, y: 0.12349286, z: -0.00001591444}
+--- !u!114 &-2823796305638699845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2926215387574489976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236e6cee75a35094f926dcfbe96ab938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsInContainer: []
+  player: {fileID: 0}
+  canvas: {fileID: 0}
