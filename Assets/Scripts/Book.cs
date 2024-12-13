@@ -13,6 +13,10 @@ public class Book : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] ingredientsText;
     [SerializeField] private TextMeshProUGUI[] descriptionText;
     
+    [SerializeField] private string newTitle;
+    [SerializeField] private string newIngredients;
+    [SerializeField] private string newDescription;
+    
     private void Start()
     {
         recipesList = new List<List<string>>();
@@ -138,5 +142,52 @@ public class Book : MonoBehaviour
         {
             Debug.LogError("Le fichier Recipes.json est introuvable.");
         }
+    }
+
+    public void SetNewTitle(string title)
+    {
+        newTitle = title;
+    }
+    
+    public void SetNewIngredients(string ingredients)
+    {
+        newIngredients = ingredients;
+    }
+    
+    public void SetNewDescription(string desc)
+    {
+        newDescription = desc;
+    }
+    
+    public void ClearInputsRecipe()
+    {
+        newTitle = null;
+        newIngredients = null;
+        newDescription = null;
+    }
+    
+    public void SaveRecipe()
+    {
+        if (newTitle == null || newIngredients == null || newDescription == null) return;
+        AddRecipe(newTitle, newIngredients, newDescription);
+        SaveRecipesToFile();
+        ClearInputsRecipe();
+    }
+    
+    private void SaveRecipesToFile()
+    {
+        List<RecipeData> recipes = new List<RecipeData>();
+        foreach (var recipe in recipesList)
+        {
+            RecipeData data = new RecipeData();
+            data.title = recipe[0];
+            data.ingredients = new List<string>(recipe[1].Split(','));
+            data.description = recipe[2];
+            recipes.Add(data);
+        }
+
+        string json = JsonConvert.SerializeObject(recipes, Formatting.Indented);
+        string filePath = Path.Combine(Application.dataPath, "Scripts/Recipes.json");
+        File.WriteAllText(filePath, json);
     }
 }
