@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7597842155828974801}
   - component: {fileID: 5282216857462178268}
   - component: {fileID: 3865191514419364628}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: storage_2_Tight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 706952156318456698}
   - component: {fileID: 6575925831350096106}
   - component: {fileID: 8702181731116212933}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crisper_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 8958343397897157071}
   - component: {fileID: 5677989624380877833}
   - component: {fileID: 2227365214053794603}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shelf_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 1024277743130550430}
   - component: {fileID: 4965417821440700392}
   - component: {fileID: 1916888699640671780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: door_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 1777854092905490343}
   - component: {fileID: 5251919387017873377}
   - component: {fileID: -1668328000740568030}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: refrigerator_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 5622467458504510680}
   - component: {fileID: 1432084461086434523}
   - component: {fileID: 6644106243160617765}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: storage_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 3851527456835383637}
   - component: {fileID: 1673281724246446835}
   - component: {fileID: 2576377328063178145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: freezerDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 1773736940338647833}
   - component: {fileID: 2025617655853219166}
   - component: {fileID: 5949034924291039346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: storage_2_Long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 2632284796239686889}
   - component: {fileID: 4764367622757954791}
   - component: {fileID: 3571398466412934685}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shelf_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

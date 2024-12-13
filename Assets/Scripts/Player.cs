@@ -24,10 +24,12 @@ public class Player : MonoBehaviour
     
     [Header("Objects Settings")]
     [SerializeField] private Material highlightMat;
-    private Material objectMat;
+    [SerializeField] private List<Material> hoveredObjectMats;
     private bool isAnimating;
     private Vector3 selectedObjectPos;
     private CompositeMotionHandle compMotionHandle;
+    private GameObject lastHoveredObject;
+    private GameObject lastHoveredStorage;
     private GameObject selectedObject;
     private GameObject[] objectsInHands;
     [SerializeField] private Camera[] camerasObject;
@@ -65,7 +67,8 @@ public class Player : MonoBehaviour
 
         Move();
         
-        HighlightObject();
+        ObjectManagement();
+        StorageManagement();
         
         if (isPlacingObj)
         {
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour
         transform.Rotate(Vector3.up * (rotate * rotationSpeed * Time.deltaTime));
     }
     
-    private void HighlightObject()
+    private void ObjectManagement()
     {
         RaycastHit hit;
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
@@ -95,7 +98,8 @@ public class Player : MonoBehaviour
         
         if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Grabbable")))
         {
-            HighlightMat(hit.transform, true);
+            Highlight(hit.transform.gameObject, true);
+            highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
             
             selectedObjectPos = hit.transform.position;
 
@@ -117,9 +121,9 @@ public class Player : MonoBehaviour
         
         else if (!Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Grabbable")))
         {
-            if (objectMat != null)
+            if (hoveredObjectMats != null)
             {
-                HighlightMat(hit.transform, false);
+                Highlight(lastHoveredObject, false);
             }
         }
 
@@ -137,24 +141,6 @@ public class Player : MonoBehaviour
                 isAnimating = false;
             }
         }
-    }
-
-    private void HighlightMat(Transform hoverObject, bool highlight)
-    {
-        if (highlight)
-        {
-            objectMat = hoverObject.GetComponent<MeshRenderer>().materials[0];
-            objectMat.EnableKeyword("_EMISSION");
-            objectMat.SetColor("_EmissionColor", new Color(1, 1, 1, 1) * 0.25f);
-            
-            highlightMat = hoverObject.GetComponent<MeshRenderer>().materials[1];
-        }
-        else
-        {
-            objectMat.SetColor("_EmissionColor", Color.black);
-            objectMat.DisableKeyword("_EMISSION"); 
-        }
-
     }
     
     private void HandlePickup(GameObject pickedObject, int hand)
@@ -219,4 +205,70 @@ public class Player : MonoBehaviour
             placingMenus[objIndex].SetActive(false);
         }
     }
+    
+    private void StorageManagement()
+    {
+        RaycastHit hit;
+        Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        
+        if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Storage")))
+        {
+            Highlight(hit.transform.gameObject, true);
+            
+            selectedObjectPos = hit.transform.position;
+
+            if (click > 0)
+            {
+            }
+        }
+        
+        else if (!Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Storage")))
+        {
+            if (hoveredObjectMats != null)
+            {
+                Highlight(lastHoveredStorage, false);
+            }
+        }
+    }
+    
+    private void Highlight(GameObject hoverObject, bool highlight)
+    {
+        if (hoverObject == null) return;
+
+        ApplyHighlight(hoverObject, highlight);
+
+        foreach (Transform child in hoverObject.transform)
+        {
+            ApplyHighlight(child.gameObject, highlight);
+        }
+
+        if (hoverObject.layer == LayerMask.NameToLayer("Grabbable"))
+        {
+            lastHoveredObject = hoverObject.gameObject;
+        }
+
+        if (hoverObject.layer == LayerMask.NameToLayer("Storage"))
+        {
+            lastHoveredStorage = hoverObject.gameObject;
+        }
+    }
+
+    private void ApplyHighlight(GameObject obj, bool highlight)
+    {
+        foreach (Material mat in obj.GetComponentInChildren<MeshRenderer>().materials)
+        {
+            if (highlight)
+            {
+                mat.EnableKeyword("_EMISSION");
+                mat.SetColor("_EmissionColor", new Color(1, 1, 1, 1) * 0.25f);
+            }
+            else
+            {
+                mat.SetColor("_EmissionColor", Color.black);
+                mat.DisableKeyword("_EMISSION");
+            }
+        }
+    }
+    
 }
