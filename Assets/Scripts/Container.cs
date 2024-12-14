@@ -1,16 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Container : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objectsInContainer;
-    private bool isLeftHand;
     [SerializeField] private Player player;
     [SerializeField] private Canvas canvas;
-    private List<Button> buttons;
+    [SerializeField] private List<Button> buttons;
     private State state;
 
     public enum State
@@ -22,31 +22,41 @@ public class Container : MonoBehaviour
 
     private void Awake()
     {
-        SetPlayer();
-    }
-
-    public void SetCanvas(Canvas value)
-    {
-        canvas = value;
+        if (player == null)
+        {
+            player = Player.Instance;
+        }
         
-        GetButtons();
+        if (canvas != null)
+        {
+            GetButtons();
+        }
     }
 
     private void GetButtons()
     {
+        if (canvas == null)
+        {
+            Debug.LogError("Canvas is not set.");
+            return;
+        }
+
         buttons = new List<Button>(canvas.GetComponentsInChildren<Button>());
         foreach (Button button in buttons)
         {
             button.onClick.AddListener(() => OnButtonClicked(button));
         }
+        
+        buttons.Where(name => name.name == "AddLeftHandButton").FirstOrDefault().gameObject.SetActive(false);
+        buttons.Where(name => name.name == "AddRightHandButton").FirstOrDefault().gameObject.SetActive(false);
     }
 
     private void OnButtonClicked(Button button)
     {
+        Debug.Log("Button " + button.name + " clicked.");
         switch (button.name)
         {
             case "AddButton":
-                state = State.Adding;
                 break;
             case "RemoveObjectButton":
                 if (objectsInContainer.Count > 0)
@@ -57,48 +67,53 @@ public class Container : MonoBehaviour
             case "ClearContainerButton":
                 ClearContainer();
                 break;
-            case "LeftHandButton":
-                SetHand(true);
-                AddObject(player.objectsInHands[0]);
-                Destroy(player.objectsInHands[0]);
+            case "AddLeftHandButton":
+                AddObject(player.objectsInHands[0], true);
                 player.objectsInHands[0] = null;
-                Debug.Log("Left hand button clicked");
-                Debug.Log("Objects in hands: " + player.objectsInHands[0] + " " + player.objectsInHands[1]);
                 break;
-            case "RightHandButton":
-                SetHand(false);
-                AddObject(player.objectsInHands[1]);
+            case "AddRightHandButton":
+                AddObject(player.objectsInHands[1], false);
                 Destroy(player.objectsInHands[1]);
                 player.objectsInHands[1] = null;
-                Debug.Log("Right hand button clicked");
-                Debug.Log("Objects in hands: " + player.objectsInHands[0] + " " + player.objectsInHands[1]);
                 break;
             default:
                 Debug.Log("No action defined for this button.");
                 break;
         }
     }
-    
-    public void AddObject(GameObject obj)
+
+    private void AddObject(GameObject obj, bool isLeftHand)
     {
+        if (obj == null)
+        {
+            Debug.LogError("Object to add is null.");
+            return;
+        }
+        
+        obj.transform.SetParent(transform);
+        obj.transform.position = transform.position;
+        obj.gameObject.SetActive(false);
+
         objectsInContainer.Add(obj);
 
         if (isLeftHand)
         {
-            GameObject objInHand = player.objectsInHands[0];
             player.objectsInHands[0] = null;
-            Destroy(objInHand);
         }
         else
         {
-            GameObject objInHand = player.objectsInHands[1];
             player.objectsInHands[1] = null;
-            Destroy(objInHand);
         }
     }
 
-    public void RemoveObject(GameObject obj)
+    private void RemoveObject(GameObject obj)
     {
+        if (obj == null)
+        {
+            Debug.LogError("Object to remove is null.");
+            return;
+        }
+
         objectsInContainer.Remove(obj);
     }
 
@@ -107,18 +122,8 @@ public class Container : MonoBehaviour
         return objectsInContainer;
     }
 
-    public void ClearContainer()
+    private void ClearContainer()
     {
         objectsInContainer.Clear();
-    }
-
-    public void SetHand(bool value)
-    {
-        isLeftHand = value;
-    }
-
-    public void SetPlayer()
-    {
-        player = Player.Instance;
     }
 }

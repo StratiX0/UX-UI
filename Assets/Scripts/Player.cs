@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private Canvas objectCanvas;
-    [SerializeField] private Canvas containerCanvas;
+    public Canvas containerCanvas;
     
     [Header("Objects Settings")]
     [SerializeField] private Material highlightMat;
@@ -76,13 +76,18 @@ public class Player : MonoBehaviour
 
         Move();
         
-        ObjectManagement();
+        SelectObject();
         ContainerManagement();
         StorageManagement();
         
         if (isPlacingObj)
         {
             PlaceObject(placingObjIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Destroy(objectsInHands[0]);
         }
         
     }
@@ -100,41 +105,38 @@ public class Player : MonoBehaviour
         transform.Rotate(Vector3.up * (rotate * rotationSpeed * Time.deltaTime));
     }
     
-    private void ObjectManagement()
+    private void SelectObject()
     {
         RaycastHit hit;
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-        
-        if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Grabbable")))
+    
+        bool hitGrabbable = Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Grabbable"));
+        bool hitNothing = !hitGrabbable && !Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Grabbable"));
+
+        if (hitGrabbable)
         {
             Highlight(hit.transform.gameObject, true);
             highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
-            
             selectedObjectPos = hit.transform.position;
 
             if (click > 0)
             {
                 if (!isAnimating)
                 {
-                    LMotion.Create(0f, 0.03f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
+                    CreateHighlightAnimation();
                     isAnimating = true;
                 }
-                
+            
                 selectedObject = hit.transform.gameObject;
-                selectedObjectPos = hit.transform.position;
                 objectCanvas.gameObject.SetActive(true);
                 objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
                 objectCanvas.transform.rotation = Quaternion.LookRotation(objectCanvas.transform.position - Camera.main.transform.position);
             }
         }
-        
-        else if (!Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Grabbable")))
+        else if (hitNothing && hoveredObjectMats != null)
         {
-            if (hoveredObjectMats != null)
-            {
-                Highlight(lastHoveredObject, false);
-            }
+            Highlight(lastHoveredObject, false);
         }
 
         if (Vector3.Distance(transform.position, selectedObjectPos) > 2f)
@@ -145,7 +147,6 @@ public class Player : MonoBehaviour
                 compMotionHandle.Cancel();
                 compMotionHandle.Clear();
                 highlightMat.SetFloat("_Thickness", 0);
-                
                 isAnimating = false;
             }
             objectCanvas.gameObject.SetActive(false);
@@ -172,38 +173,33 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-        
-        if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Container")))
+
+        bool hitContainer = Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Container"));
+        bool hitNothing = !hitContainer && !Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Container"));
+
+        if (hitContainer)
         {
             Highlight(hit.transform.gameObject, true);
             highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
-            
             selectedObjectPos = hit.transform.position;
 
             if (click > 0)
             {
                 if (!isAnimating)
                 {
-                    LMotion.Create(0f, 0.03f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
+                    CreateHighlightAnimation();
                     isAnimating = true;
                 }
-                
+
                 selectedObject = hit.transform.gameObject;
-                containerCanvas.gameObject.SetActive(true);
-                selectedObject.GetComponent<Container>().SetCanvas(containerCanvas);
-                selectedObjectPos = hit.transform.position;
                 containerCanvas.gameObject.SetActive(true);
                 containerCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
                 containerCanvas.transform.rotation = Quaternion.LookRotation(containerCanvas.transform.position - Camera.main.transform.position);
             }
         }
-        
-        else if (!Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Container")))
+        else if (hitNothing && hoveredObjectMats != null)
         {
-            if (hoveredObjectMats != null)
-            {
-                Highlight(lastHoveredContainer, false);
-            }
+            Highlight(lastHoveredContainer, false);
         }
 
         if (Vector3.Distance(transform.position, selectedObjectPos) > 2f)
@@ -214,7 +210,6 @@ public class Player : MonoBehaviour
                 compMotionHandle.Cancel();
                 compMotionHandle.Clear();
                 highlightMat.SetFloat("_Thickness", 0);
-                
                 isAnimating = false;
             }
             containerCanvas.gameObject.SetActive(false);
@@ -338,5 +333,9 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
+
+    private void CreateHighlightAnimation()
+    {
+        LMotion.Create(0f, 0.04f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
+    }
 }
