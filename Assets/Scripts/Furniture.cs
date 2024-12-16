@@ -42,15 +42,23 @@ public class Furniture : MonoBehaviour
         {
             GameObject tab = tabPrefab;
             tab.GetComponentInChildren<TextMeshProUGUI>().text = $"Shelf {shelves.IndexOf(obj) + 1}";
+            ShelfButton button = tab.GetComponent<ShelfButton>();
+            button.currentStorage = gameObject;
+            button.index = shelves.IndexOf(obj);
             Instantiate(tabPrefab, tabsParent.transform);
         }
         
+        UpdateGrid(0);
+    }
+    
+    public void UpdateGrid(int shelfIndex)
+    {
         foreach (Transform child in gridParent.transform)
         {
             Destroy(child.gameObject);
         }
         
-        foreach (var obj in shelves[0].objects)
+        foreach (var obj in shelves[shelfIndex].objects)
         {
             GameObject gridElement = gridElementPrefab;
             gridElement.GetComponent<ObjectButton>().kitchenObject = obj;
