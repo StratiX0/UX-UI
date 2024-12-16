@@ -6,10 +6,8 @@ using UnityEngine.EventSystems;
 public class ShelfButton : MonoBehaviour, IPointerDownHandler
 {
     public GameObject prefab;
-    
-    private ShelfGroup shelfGroup;
     private Shelf shelf;
-    private bool active;
+    private bool isActive;
     
     
     
@@ -20,6 +18,6 @@ public class ShelfButton : MonoBehaviour, IPointerDownHandler
     
     public void SetActive(bool value)
     {
-        active = value;
+        isActive = value;
     }
 }

@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 2673844655391364038}
   - component: {fileID: 7411095865042902573}
   - component: {fileID: 1037710970859741512}
-  - component: {fileID: 8029587697514112577}
   m_Layer: 5
-  m_Name: Grid
+  m_Name: GridShelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,31 +113,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
+    m_Left: 25
+    m_Right: 25
+    m_Top: 25
+    m_Bottom: 25
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 150, y: 150}
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 3
---- !u!114 &8029587697514112577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3803226313620319999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01e9455b7bf3b54d96fdcee16908f7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kitchenObjects: []
-  prefab: {fileID: 3803226313620319999}
 --- !u!1001 &313791832673282376
 PrefabInstance:
   m_ObjectHideFlags: 0

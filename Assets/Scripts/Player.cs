@@ -277,6 +277,7 @@ public class Player : MonoBehaviour
             if (click > 0)
             {
                 storageCanvas.gameObject.SetActive(true);
+                hit.transform.GetComponent<Furniture>().UpdateMenu();
             }
         }
         
@@ -288,7 +289,7 @@ public class Player : MonoBehaviour
             }
         }
         
-        else if (Vector3.Distance(transform.position, selectedObjectPos) > 2f)
+        else if (Vector3.Distance(transform.position, selectedObjectPos) > 3f)
         {
             storageCanvas.gameObject.SetActive(false);
         }
