@@ -285,8 +285,12 @@ public class Player : MonoBehaviour
             if (hoveredObjectMats != null)
             {
                 Highlight(lastHoveredStorage, false);
-                storageCanvas.gameObject.SetActive(false);
             }
+        }
+        
+        else if (Vector3.Distance(transform.position, selectedObjectPos) > 2f)
+        {
+            storageCanvas.gameObject.SetActive(false);
         }
     }
     
