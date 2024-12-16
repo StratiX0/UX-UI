@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: -384399661913247386}
   - component: {fileID: -5139304191621036207}
   m_Layer: 6
-  m_Name: lettuceIceberg
+  m_Name: LettuceIceberg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

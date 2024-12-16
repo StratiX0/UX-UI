@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1467609373781860231}
   - component: {fileID: 4574197689340128163}
   m_Layer: 6
-  m_Name: corn_Cob
+  m_Name: CornCob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

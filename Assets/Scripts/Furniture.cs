@@ -5,4 +5,5 @@ using UnityEngine;
 public class Furniture : MonoBehaviour
 {
     public List<KitchenObject> kitchenObjects;
+    public List<Shelf> shelves;
 }

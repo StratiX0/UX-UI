@@ -5,5 +5,5 @@ using UnityEngine;
 public class ShelfGroup : MonoBehaviour
 {
     public List<Shelf> shelves;
-    public List<ShelfButton> buttons;
+    public List<ShelfButton> shelfButtons;
 }
