@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using LitMotion;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -22,8 +23,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     
     [Header("References")]
+    [SerializeField] private Canvas mainCanvas;
     [SerializeField] private Canvas objectCanvas;
     public Canvas containerCanvas;
+    public Canvas storageCanvas;
     
     [Header("Objects Settings")]
     [SerializeField] private Material highlightMat;
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour
         selectedObjectPos = new Vector3(9999999, 9999999, 9999999);
         compMotionHandle = new CompositeMotionHandle();
         objectsInHands = new GameObject[2];
+        mainCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -84,12 +88,6 @@ public class Player : MonoBehaviour
         {
             PlaceObject(placingObjIndex);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Destroy(objectsInHands[0]);
-        }
-        
     }
 
     private void GetInputs()
@@ -165,7 +163,7 @@ public class Player : MonoBehaviour
             child.gameObject.layer = LayerMask.NameToLayer("Grabbed");
         }
         objectsInHands[hand] = pickedObject;
-        Debug.Log($"Picking up with {(hand == 0 ? "left" : "right")} hand");
+        mainCanvas.gameObject.SetActive(true);
     }
     
     private void ContainerManagement()
@@ -278,6 +276,7 @@ public class Player : MonoBehaviour
 
             if (click > 0)
             {
+                storageCanvas.gameObject.SetActive(true);
             }
         }
         
@@ -286,6 +285,7 @@ public class Player : MonoBehaviour
             if (hoveredObjectMats != null)
             {
                 Highlight(lastHoveredStorage, false);
+                storageCanvas.gameObject.SetActive(false);
             }
         }
     }
