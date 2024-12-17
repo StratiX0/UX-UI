@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     private GameObject lastHoveredObject;
     private GameObject lastHoveredContainer;
     private GameObject lastHoveredStorage;
-    private GameObject selectedObject;
+    [SerializeField] private GameObject selectedObject;
     public GameObject[] objectsInHands;
     [SerializeField] private Camera[] camerasObject;
     [SerializeField] private bool isPlacingObj;
@@ -274,8 +274,9 @@ public class Player : MonoBehaviour
             
             selectedObjectPos = hit.transform.position;
 
-            if (click > 0)
+            if (click > 0 && selectedObject != hit.transform.gameObject)
             {
+                Highlight(hit.transform.gameObject, false);
                 storageCanvas.gameObject.SetActive(true);
                 hit.transform.GetComponent<Furniture>().UpdateMenu();
             }

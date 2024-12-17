@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79470a4202e34545a06e7b38b711d36, type: 3}
+  m_Name: BurgerBun
+  m_EditorClassIdentifier: 
+  name: Burger Bun
+  description: Bun made for burger sandwiches
+  prefab: {fileID: 5569612086867529233, guid: ec492e34a156ee044976632bb252f9ae, type: 3}
+  icon: {fileID: 21300000, guid: 7d31cc31eaf9d1546936b3ead4d235fe, type: 3}

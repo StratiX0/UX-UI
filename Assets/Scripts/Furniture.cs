@@ -61,8 +61,8 @@ public class Furniture : MonoBehaviour
         foreach (var obj in shelves[shelfIndex].objects)
         {
             GameObject gridElement = gridElementPrefab;
-            gridElement.GetComponent<ObjectButton>().kitchenObject = obj;
-            gridElement.GetComponent<ObjectButton>().descriptionPanel = descriptionPanel;
+            gridElement.GetComponentInChildren<ObjectButton>().kitchenObject = obj;
+            gridElement.GetComponentInChildren<ObjectButton>().descriptionPanel = descriptionPanel;
             
             Instantiate(gridElementPrefab, gridParent.transform);
         }

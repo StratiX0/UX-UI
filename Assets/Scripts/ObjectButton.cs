@@ -29,13 +29,14 @@ public class ObjectButton : MonoBehaviour, IPointerDownHandler
 
     private void DisplayDescription()
     {
-        nameText.text = kitchenObject.name;
+        nameText.text = kitchenObject.GetName();
         descriptionText.text = kitchenObject.GetDescription();
+        descriptionPanel.transform.Find("Icon").GetComponent<Image>().sprite = icon;
     }
     
     private void DisplayIcon()
     {
         icon = kitchenObject.GetIcon();
-        transform.GetComponent<Image>().sprite = icon;
+        transform.GetComponentInChildren<Image>().sprite = icon;
     }
 }

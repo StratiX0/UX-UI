@@ -5,9 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Objects", menuName = "Scriptable Item")]
 public class KitchenObject : ScriptableObject
 {
+    [SerializeField] private string name;
     [SerializeField] private string description;
     [SerializeField] private GameObject prefab;
     [SerializeField] private Sprite icon;
+    
+    public void SetName(string value)
+    {
+        name = value;
+    }
+    
+    public string GetName()
+    {
+        return name;
+    }
     
     public void SetDescription(string value)
     {
