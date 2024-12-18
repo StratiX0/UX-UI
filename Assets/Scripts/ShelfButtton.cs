@@ -13,6 +13,7 @@ public class ShelfButton : MonoBehaviour, IPointerDownHandler
     
     public void OnPointerDown(PointerEventData eventData)
     {
+        currentStorage.GetComponent<Furniture>().currentShelf = index;
         currentStorage.GetComponent<Furniture>().UpdateGrid(index);
     }
     

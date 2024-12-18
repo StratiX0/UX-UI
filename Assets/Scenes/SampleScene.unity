@@ -9107,9 +9107,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f250c221d7f63f4dbc6ee732971d09a, type: 2}
   - {fileID: 11400000, guid: 6f9d5116a58a8e648aadfc7770c05fed, type: 2}
   - {fileID: 11400000, guid: 6f9d5116a58a8e648aadfc7770c05fed, type: 2}
-  - {fileID: 11400000, guid: 6f9d5116a58a8e648aadfc7770c05fed, type: 2}
-  - {fileID: 11400000, guid: 4f250c221d7f63f4dbc6ee732971d09a, type: 2}
-  - {fileID: 11400000, guid: 4f250c221d7f63f4dbc6ee732971d09a, type: 2}
   index: 0
   prefab: {fileID: 0}
 --- !u!114 &1209852161

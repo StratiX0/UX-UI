@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,21 +20,26 @@ public class Furniture : MonoBehaviour
     public List<GameObject> gridElements;
     public int currentShelf;
 
+    private void Start()
+    {
+        currentShelf = 0;
+    }
+
     private void GetShelves()
     {
         shelves = new List<ShelvesObjects>();
-        currentShelf = 0;
+        
+        int index = 0;
         foreach (var shelf in transform.GetComponentsInChildren<Shelf>())
         {
-            shelf.index = currentShelf;
-            currentShelf++;
+            shelf.index = index;
             ShelvesObjects shelfObjects = new ShelvesObjects
             {
                 objects = shelf.GetObjects()
             };
             shelves.Add(shelfObjects);
+            index++;
         }
-        currentShelf = 0;
     }
     
     public void UpdateMenu()
