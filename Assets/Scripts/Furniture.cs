@@ -16,18 +16,24 @@ public class Furniture : MonoBehaviour
     [SerializeField] GameObject gridParent;
     [SerializeField] GameObject gridElementPrefab;
     [SerializeField] GameObject descriptionPanel;
+    public List<GameObject> gridElements;
+    public int currentShelf;
 
     private void GetShelves()
     {
         shelves = new List<ShelvesObjects>();
+        currentShelf = 0;
         foreach (var shelf in transform.GetComponentsInChildren<Shelf>())
         {
+            shelf.index = currentShelf;
+            currentShelf++;
             ShelvesObjects shelfObjects = new ShelvesObjects
             {
                 objects = shelf.GetObjects()
             };
             shelves.Add(shelfObjects);
         }
+        currentShelf = 0;
     }
     
     public void UpdateMenu()
@@ -54,6 +60,8 @@ public class Furniture : MonoBehaviour
     
     public void UpdateGrid(int shelfIndex)
     {
+        gridElements = new List<GameObject>();
+        
         foreach (Transform child in gridParent.transform)
         {
             Destroy(child.gameObject);
@@ -63,7 +71,6 @@ public class Furniture : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, 725);
         GridLayoutGroup gridLayoutGroup = gridParent.GetComponent<GridLayoutGroup>();
     
-        float cells = gridLayoutGroup.cellSize.y;
         float spacing = gridLayoutGroup.spacing.y * 2;
         
         int count = 0;
@@ -77,6 +84,8 @@ public class Furniture : MonoBehaviour
             GameObject gridElement = Instantiate(gridElementPrefab, gridParent.transform);
             gridElement.GetComponentInChildren<ObjectButton>().kitchenObject = obj;
             gridElement.GetComponentInChildren<ObjectButton>().descriptionPanel = descriptionPanel;
+            gridElement.GetComponentInChildren<ObjectButton>().furniture = this;
+            gridElements.Add(gridElement);
             
             count++;
         }

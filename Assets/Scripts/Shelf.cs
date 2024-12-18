@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shelf : MonoBehaviour
 {
     [SerializeField] private List<KitchenObject> kitchenObjects;
+    public int index;
     public GameObject prefab;
     
     public void AddObject(KitchenObject kitchenObject)
