@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     public GameObject[] objectsInHands;
     [SerializeField] private Camera[] camerasObject;
     [SerializeField] private bool isPlacingObj;
+    [SerializeField] private bool inMenu;
     private int placingObjIndex;
     [SerializeField] private GameObject[] placingMenus;
 
@@ -76,13 +77,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        GetInputs();
-
-        Move();
-        
-        SelectObject();
-        ContainerManagement();
-        StorageManagement();
+        if (!inMenu)
+        {
+            GetInputs();
+            Move();
+            SelectObject();
+            ContainerManagement();
+            StorageManagement();
+        }
         
         if (isPlacingObj)
         {
@@ -112,7 +114,7 @@ public class Player : MonoBehaviour
         bool hitGrabbable = Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Grabbable"));
         bool hitNothing = !hitGrabbable && !Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Grabbable"));
 
-        if (hitGrabbable)
+        if (hitGrabbable && !inMenu)
         {
             Highlight(hit.transform.gameObject, true);
             highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
@@ -130,6 +132,7 @@ public class Player : MonoBehaviour
                 objectCanvas.gameObject.SetActive(true);
                 objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
                 objectCanvas.transform.rotation = Quaternion.LookRotation(objectCanvas.transform.position - Camera.main.transform.position);
+                inMenu = true;
             }
         }
         else if (hitNothing && hoveredObjectMats != null)
@@ -148,6 +151,7 @@ public class Player : MonoBehaviour
                 isAnimating = false;
             }
             objectCanvas.gameObject.SetActive(false);
+            inMenu = false;
         }
     }
     
@@ -175,7 +179,7 @@ public class Player : MonoBehaviour
         bool hitContainer = Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Container"));
         bool hitNothing = !hitContainer && !Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Container"));
 
-        if (hitContainer)
+        if (hitContainer && !inMenu)
         {
             Highlight(hit.transform.gameObject, true);
             highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
@@ -193,6 +197,7 @@ public class Player : MonoBehaviour
                 containerCanvas.gameObject.SetActive(true);
                 containerCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
                 containerCanvas.transform.rotation = Quaternion.LookRotation(containerCanvas.transform.position - Camera.main.transform.position);
+                inMenu = true;
             }
         }
         else if (hitNothing && hoveredObjectMats != null)
@@ -211,6 +216,7 @@ public class Player : MonoBehaviour
                 isAnimating = false;
             }
             containerCanvas.gameObject.SetActive(false);
+            inMenu = false;
         }
     }
 
@@ -268,7 +274,7 @@ public class Player : MonoBehaviour
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         
-        if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Storage")))
+        if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Storage")) && !inMenu)
         {
             Highlight(hit.transform.gameObject, true);
             
@@ -278,7 +284,9 @@ public class Player : MonoBehaviour
             {
                 Highlight(hit.transform.gameObject, false);
                 storageCanvas.gameObject.SetActive(true);
+                hit.transform.GetComponent<Furniture>().ClearUi();
                 hit.transform.GetComponent<Furniture>().UpdateMenu();
+                inMenu = true;
             }
         }
         
@@ -293,6 +301,7 @@ public class Player : MonoBehaviour
         else if (Vector3.Distance(transform.position, selectedObjectPos) > 3f)
         {
             storageCanvas.gameObject.SetActive(false);
+            inMenu = false;
         }
     }
     
@@ -343,5 +352,10 @@ public class Player : MonoBehaviour
     private void CreateHighlightAnimation()
     {
         LMotion.Create(0f, 0.04f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
+    }
+    
+    public void CloseMenu()
+    {
+        inMenu = false;
     }
 }

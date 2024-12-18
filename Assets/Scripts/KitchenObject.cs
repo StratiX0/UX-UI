@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Objects", menuName = "Scriptable Item")]
 public class KitchenObject : ScriptableObject
 {
-    [SerializeField] private string name;
+    [SerializeField] private string objectName;
     [SerializeField] private string description;
     [SerializeField] private GameObject prefab;
     [SerializeField] private Sprite icon;
     
     public void SetName(string value)
     {
-        name = value;
+        objectName = value;
     }
     
     public string GetName()
     {
-        return name;
+        return objectName;
     }
     
     public void SetDescription(string value)

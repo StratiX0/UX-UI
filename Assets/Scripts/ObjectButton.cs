@@ -31,6 +31,7 @@ public class ObjectButton : MonoBehaviour, IPointerDownHandler
     {
         nameText.text = kitchenObject.GetName();
         descriptionText.text = kitchenObject.GetDescription();
+        descriptionPanel.transform.Find("Icon").gameObject.SetActive(true);
         descriptionPanel.transform.Find("Icon").GetComponent<Image>().sprite = icon;
     }
     

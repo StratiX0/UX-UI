@@ -67,4 +67,11 @@ public class Furniture : MonoBehaviour
             Instantiate(gridElementPrefab, gridParent.transform);
         }
     }
+
+    public void ClearUi()
+    {
+        descriptionPanel.transform.Find("Icon").gameObject.SetActive(false);
+        descriptionPanel.transform.Find("ObjectName").GetComponent<TextMeshProUGUI>().text = "";
+        descriptionPanel.transform.Find("Description").GetComponent<TextMeshProUGUI>().text = "";
+    }
 }
