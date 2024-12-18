@@ -1,15 +1,20 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 
-public class ObjectButton : MonoBehaviour,IPointerUpHandler, IPointerDownHandler, IDragHandler
+public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IDragHandler
 {
+    public Player player;
+    public GameObject gridshelf;
     public GameObject parent;
     public Furniture furniture;
     public KitchenObject kitchenObject;
     public GameObject descriptionPanel;
+    public GameObject collectButton;
+    public GameObject storeButton;
+    public GameObject leftHandButton;
+    public GameObject rightHandButton;
     private Sprite icon;
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI descriptionText;
@@ -17,6 +22,12 @@ public class ObjectButton : MonoBehaviour,IPointerUpHandler, IPointerDownHandler
 
     private void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Player>();
+        leftHandButton = GameObject.Find("StoreLeftHand");
+        rightHandButton = GameObject.Find("StoreRightHand");
+        collectButton = GameObject.Find("Collect");
+        storeButton = GameObject.Find("Store");
+        gridshelf = GameObject.Find("GridShelf");
         descriptionPanel = GameObject.Find("DescriptionPanel");
         nameText = descriptionPanel.transform.Find("ObjectName").GetComponent<TextMeshProUGUI>();
         descriptionText = descriptionPanel.transform.Find("Description").GetComponent<TextMeshProUGUI>();
@@ -32,15 +43,96 @@ public class ObjectButton : MonoBehaviour,IPointerUpHandler, IPointerDownHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        parent.GetComponent<LayoutElement>().ignoreLayout = true; 
+        parent.GetComponent<LayoutElement>().ignoreLayout = true;
         parent.GetComponent<RectTransform>().position = Input.mousePosition;
+        leftHandButton.GetComponent<Image>().color = Color.green;
+        rightHandButton.GetComponent<Image>().color = Color.green;
     }
     
+    private bool IsMouseOverParent()
+    {
+        if (gridshelf == null) return false; // Vérifie si le parent existe
+
+        RectTransform gridshelftRect = gridshelf.GetComponent<RectTransform>();
+        if (gridshelftRect == null) return false; // Vérifie si le parent a un RectTransform
+
+        Vector2 localMousePosition = gridshelftRect.InverseTransformPoint(Input.mousePosition);
+        return gridshelftRect.rect.Contains(localMousePosition); // Vérifie si la souris est dans les limites du RectTransform
+    }
+    
+    private bool IsMouseOverLeftHand()
+    {
+        if (leftHandButton == null) return false; // Vérifie si le parent existe
+
+        RectTransform leftHandRect = leftHandButton.GetComponent<RectTransform>();
+        if (leftHandRect == null) return false; // Vérifie si le parent a un RectTransform
+
+        Vector2 localMousePosition = leftHandRect.InverseTransformPoint(Input.mousePosition);
+        return leftHandRect.rect.Contains(localMousePosition); // Vérifie si la souris est dans les limites du RectTransform
+    }
+    
+    private bool IsMouseOveRightHand()
+    {
+        if (rightHandButton == null) return false; // Vérifie si le parent existe
+
+        RectTransform rightHandRect = rightHandButton.GetComponent<RectTransform>();
+        if (rightHandRect == null) return false; // Vérifie si le parent a un RectTransform
+
+        Vector2 localMousePosition = rightHandRect.InverseTransformPoint(Input.mousePosition);
+        return rightHandRect.rect.Contains(localMousePosition); // Vérifie si la souris est dans les limites du RectTransform
+    }
+
     public void OnPointerUp(PointerEventData eventData)
     {
         parent.GetComponent<LayoutElement>().ignoreLayout = false;
         parent.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+        
+        leftHandButton.GetComponent<Image>().color = Color.white;
+        rightHandButton.GetComponent<Image>().color = Color.white;
+        
+        MouseOrderElements();
+        AddToHands();
 
+        Debug.Log("End Drag");
+    }
+    
+    private void AddToHands()
+    {
+        if (IsMouseOverLeftHand() && player.objectsInHands[0] == null)
+        {
+            GameObject obj = Instantiate(kitchenObject.GetPrefab());
+            player.HandlePickup(obj, 0);
+            foreach (var shelf in furniture.GetComponentsInChildren<Shelf>())
+            {
+                if (shelf.index == furniture.currentShelf)
+                {
+                    shelf.RemoveObject(kitchenObject);
+                }
+            }
+            // furniture.shelves[furniture.currentShelf].objects.Remove(kitchenObject);
+            furniture.gridElements.Remove(transform.parent.gameObject);
+            Destroy(parent);
+        }
+        else if (IsMouseOveRightHand() && player.objectsInHands[1] == null)
+        {
+            GameObject obj = Instantiate(kitchenObject.GetPrefab());
+            player.HandlePickup(obj, 1);
+            foreach (var shelf in furniture.GetComponentsInChildren<Shelf>())
+            {
+                if (shelf.index == furniture.currentShelf)
+                {
+                    shelf.RemoveObject(kitchenObject);
+                }
+            }
+            furniture.gridElements.Remove(transform.parent.gameObject);
+            Destroy(parent);
+        }
+    }
+    
+    private void MouseOrderElements()
+    {
+        if (!IsMouseOverParent()) return;
+        
         float distance = 100000;
         GameObject closestElement = null;
 
@@ -89,12 +181,10 @@ public class ObjectButton : MonoBehaviour,IPointerUpHandler, IPointerDownHandler
                 }
             }
         }
-        
-        furniture.UpdateGrid(furniture.currentShelf);
 
-        Debug.Log("End Drag");
+        furniture.UpdateGrid(furniture.currentShelf);
     }
-    
+
     private void DisplayDescription()
     {
         nameText.text = kitchenObject.GetName();

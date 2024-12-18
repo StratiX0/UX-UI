@@ -155,9 +155,9 @@ public class Player : MonoBehaviour
         }
     }
     
-    private void HandlePickup(GameObject pickedObject, int hand)
+    public void HandlePickup(GameObject pickedObject, int hand)
     {
-        if (objectsInHands[hand] == null) return;
+        if (objectsInHands[hand] != null) return;
         pickedObject.GetComponent<Rigidbody>().isKinematic = true;
         pickedObject.transform.SetParent(transform);
         pickedObject.transform.localPosition = camerasObject[hand].transform.localPosition - new Vector3(2, 2, 0);
