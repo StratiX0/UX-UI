@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Furniture : MonoBehaviour
 {
@@ -58,13 +59,26 @@ public class Furniture : MonoBehaviour
             Destroy(child.gameObject);
         }
         
+        RectTransform rectTransform = gridParent.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, 725);
+        GridLayoutGroup gridLayoutGroup = gridParent.GetComponent<GridLayoutGroup>();
+    
+        float cells = gridLayoutGroup.cellSize.y;
+        float spacing = gridLayoutGroup.spacing.y * 2;
+        
+        int count = 0;
         foreach (var obj in shelves[shelfIndex].objects)
         {
-            GameObject gridElement = gridElementPrefab;
+            if (count % 6 == 0 && count != 0)
+            {
+                rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y + spacing);
+            }
+            
+            GameObject gridElement = Instantiate(gridElementPrefab, gridParent.transform);
             gridElement.GetComponentInChildren<ObjectButton>().kitchenObject = obj;
             gridElement.GetComponentInChildren<ObjectButton>().descriptionPanel = descriptionPanel;
             
-            Instantiate(gridElementPrefab, gridParent.transform);
+            count++;
         }
     }
 
