@@ -11,8 +11,6 @@ public class ShelfButton : MonoBehaviour, IPointerDownHandler
     public int index;
     public GameObject currentStorage;
     
-    
-    
     public void OnPointerDown(PointerEventData eventData)
     {
         currentStorage.GetComponent<Furniture>().UpdateGrid(index);

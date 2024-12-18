@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 
-public class ObjectButton : MonoBehaviour, IPointerDownHandler
+public class ObjectButton : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     public KitchenObject kitchenObject;
     public GameObject descriptionPanel;
@@ -27,6 +28,22 @@ public class ObjectButton : MonoBehaviour, IPointerDownHandler
         isSelected = true;
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        GetComponentInParent<LayoutElement>().ignoreLayout = true;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        GetComponentInParent<RectTransform>().position = Input.mousePosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        GetComponentInParent<LayoutElement>().ignoreLayout = false;
+        Debug.Log("End Drag");
+    }
+
     private void DisplayDescription()
     {
         nameText.text = kitchenObject.GetName();
@@ -34,7 +51,7 @@ public class ObjectButton : MonoBehaviour, IPointerDownHandler
         descriptionPanel.transform.Find("Icon").gameObject.SetActive(true);
         descriptionPanel.transform.Find("Icon").GetComponent<Image>().sprite = icon;
     }
-    
+
     private void DisplayIcon()
     {
         icon = kitchenObject.GetIcon();

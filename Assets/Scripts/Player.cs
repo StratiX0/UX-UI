@@ -157,6 +157,7 @@ public class Player : MonoBehaviour
     
     private void HandlePickup(GameObject pickedObject, int hand)
     {
+        if (objectsInHands[hand] == null) return;
         pickedObject.GetComponent<Rigidbody>().isKinematic = true;
         pickedObject.transform.SetParent(transform);
         pickedObject.transform.localPosition = camerasObject[hand].transform.localPosition - new Vector3(2, 2, 0);
@@ -222,11 +223,11 @@ public class Player : MonoBehaviour
 
     public void PickupHand(int hand)
     {
-        if (hand == 0 && objectsInHands[0] == null)
+        if (hand == 0)
         {
             HandlePickup(selectedObject, 0);
         }
-        else if (hand == 1 && objectsInHands[1] == null)
+        else if (hand == 1)
         {
             HandlePickup(selectedObject, 1);
         }
