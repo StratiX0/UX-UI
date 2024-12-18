@@ -121,10 +121,10 @@ public class Book : MonoBehaviour
     
     private void LoadRecipe()
     {
-        string filePath = Path.Combine(Application.dataPath, "Scripts/Recipes.json");
-        if (File.Exists(filePath))
+        TextAsset jsonFile = Resources.Load<TextAsset>("Recipes");
+        if (jsonFile != null)
         {
-            string json = File.ReadAllText(filePath);
+            string json = jsonFile.text;
             List<RecipeData> recipes = JsonConvert.DeserializeObject<List<RecipeData>>(json);
 
             foreach (var recipe in recipes)
@@ -135,7 +135,7 @@ public class Book : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Le fichier Recipes.json est introuvable.");
+            Debug.LogError("Le fichier Recipes.json est introuvable dans le dossier Resources.");
         }
     }
 
@@ -182,7 +182,7 @@ public class Book : MonoBehaviour
         }
 
         string json = JsonConvert.SerializeObject(recipes, Formatting.Indented);
-        string filePath = Path.Combine(Application.dataPath, "Scripts/Recipes.json");
+        string filePath = Path.Combine(Application.persistentDataPath, "Recipes.json");
         File.WriteAllText(filePath, json);
     }
 }
