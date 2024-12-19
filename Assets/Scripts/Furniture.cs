@@ -27,17 +27,11 @@ public class Furniture : MonoBehaviour
     [SerializeField] private int shelfRangeMax;
     [SerializeField] private int objNbrRangeMin;
     [SerializeField] private int objNbrRangeMax;
-    [SerializeField] private List<KitchenObject> kitchenObjects;
+    [SerializeField] private KitchenObjectList kitchenObjectList;
 
     private void Start()
     {
         currentShelf = 0;
-        kitchenObjects = new List<KitchenObject>();
-        
-        foreach (var obj in Resources.LoadAll("Objects/KitchenObjects", typeof(KitchenObject)))
-        {
-            kitchenObjects.Add((KitchenObject) obj);
-        }
     }
 
     public void CreateShelves()
@@ -52,18 +46,8 @@ public class Furniture : MonoBehaviour
         for (int i = 0; i < randomShelfNbr; i++)
         {
             Shelf shelf = gameObject.AddComponent<Shelf>();
-            shelf.index = i;
-        }
-        
-        foreach (var shelf in transform.GetComponentsInChildren<Shelf>())
-        {
-            int randomObjectNbr = Random.Range(objNbrRangeMin, objNbrRangeMax);
-            
-            for (int j = 0; j < randomObjectNbr; j++)
-            {
-                int randomObjectIndex = Random.Range(0, kitchenObjects.Count - 1);
-                shelf.AddObject(kitchenObjects[randomObjectIndex]);
-            }
+            shelf.kitchenObjectList = kitchenObjectList;
+            shelf.AddRandomObjects(objNbrRangeMin, objNbrRangeMax);
         }
     }
 

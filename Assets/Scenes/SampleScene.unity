@@ -9766,10 +9766,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01e9455b7bf3b54d96fdcee16908f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToCreate: []
   kitchenObjects:
   - {fileID: 11400000, guid: 4f250c221d7f63f4dbc6ee732971d09a, type: 2}
   - {fileID: 11400000, guid: 6f9d5116a58a8e648aadfc7770c05fed, type: 2}
   - {fileID: 11400000, guid: 6f9d5116a58a8e648aadfc7770c05fed, type: 2}
+  kitchenObjectList: {fileID: 0}
   index: 0
   prefab: {fileID: 0}
 --- !u!114 &1209852161
@@ -9784,9 +9786,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01e9455b7bf3b54d96fdcee16908f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToCreate: []
   kitchenObjects:
   - {fileID: 11400000, guid: 4f250c221d7f63f4dbc6ee732971d09a, type: 2}
   - {fileID: 11400000, guid: 6f9d5116a58a8e648aadfc7770c05fed, type: 2}
+  kitchenObjectList: {fileID: 0}
   index: 0
   prefab: {fileID: 0}
 --- !u!114 &1209852167
@@ -9801,6 +9805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01e9455b7bf3b54d96fdcee16908f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToCreate: []
   kitchenObjects:
   - {fileID: 11400000, guid: 6f9d5116a58a8e648aadfc7770c05fed, type: 2}
   - {fileID: 11400000, guid: 0b489bd46b24b8348aeebc6d7b1f1a10, type: 2}
@@ -9817,6 +9822,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18edf58c256b2094bacfc739833f0461, type: 2}
   - {fileID: 11400000, guid: ff3149ae3a6d35d419db94052f1849c8, type: 2}
   - {fileID: 11400000, guid: 209a402c4f796d94fb78c5b41f99786d, type: 2}
+  kitchenObjectList: {fileID: 0}
   index: 0
   prefab: {fileID: 0}
 --- !u!1 &1246153794 stripped
@@ -9849,10 +9855,10 @@ MonoBehaviour:
   currentShelf: 0
   isMagic: 1
   shelfRangeMin: 1
-  shelfRangeMax: 4
+  shelfRangeMax: 3
   objNbrRangeMin: 1
   objNbrRangeMax: 30
-  kitchenObjects: []
+  kitchenObjectList: {fileID: 11400000, guid: b2d2dc85219d89247911a417b4fa87fd, type: 2}
 --- !u!1 &1248318826
 GameObject:
   m_ObjectHideFlags: 0
