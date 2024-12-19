@@ -256,6 +256,7 @@ public class Player : MonoBehaviour
             objectsInHands[objIndex].transform.position = hit.point;
             objectsInHands[objIndex].transform.SetParent(null);
             objectsInHands[objIndex].layer = LayerMask.NameToLayer("Grabbable");
+            objectsInHands[objIndex].transform.localScale = Vector3.one;
             foreach (var child in objectsInHands[objIndex].transform.gameObject.GetComponentsInChildren<Transform>())
             {
                 child.gameObject.layer = LayerMask.NameToLayer("Grabbable");
