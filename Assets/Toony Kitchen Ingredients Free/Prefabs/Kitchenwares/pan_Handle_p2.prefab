@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5086242659113847052}
   - component: {fileID: 766683039814009126}
   - component: {fileID: -3955248606725684716}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: pan_Handle_p2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

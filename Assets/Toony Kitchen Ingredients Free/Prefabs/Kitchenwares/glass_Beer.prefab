@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7433692530525462723}
   - component: {fileID: 6738408484671078773}
   - component: {fileID: 1869915798971140742}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: glass_Beer_Liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5935514255089521776}
   - component: {fileID: 720631240978995137}
   - component: {fileID: -1881562891204823135}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: glass_Beer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

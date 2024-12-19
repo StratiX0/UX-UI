@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6245566265610084791}
   - component: {fileID: 2003934604078316805}
   - component: {fileID: 6034826085307916645}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: jug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 3349305233988395408}
   - component: {fileID: 854066542584260902}
   - component: {fileID: 7222483378500304293}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: jug_Liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 316898656270369612}
   - component: {fileID: 2729610914232815251}
   - component: {fileID: 1491325181085874306}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: jug_Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

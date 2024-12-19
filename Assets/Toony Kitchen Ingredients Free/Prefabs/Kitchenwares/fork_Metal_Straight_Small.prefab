@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6663217172910202326}
   - component: {fileID: 1607263490650999665}
   - component: {fileID: -3235520453267962812}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: fork_Metal_Straight_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}

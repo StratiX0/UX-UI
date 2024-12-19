@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Furniture : MonoBehaviour
 {
@@ -12,17 +14,57 @@ public class Furniture : MonoBehaviour
     }
 
     public List<ShelvesObjects> shelves;
-    [SerializeField] GameObject tabsParent;
-    [SerializeField] GameObject tabPrefab;
-    [SerializeField] GameObject gridParent;
-    [SerializeField] GameObject gridElementPrefab;
-    [SerializeField] GameObject descriptionPanel;
+    [SerializeField] private GameObject tabsParent;
+    [SerializeField] private GameObject tabPrefab;
+    [SerializeField] private GameObject gridParent;
+    [SerializeField] private GameObject gridElementPrefab;
+    [SerializeField] private GameObject descriptionPanel;
     public List<GameObject> gridElements;
     public int currentShelf;
+    public bool isMagic;
+    
+    [SerializeField] private int shelfRangeMin;
+    [SerializeField] private int shelfRangeMax;
+    [SerializeField] private int objNbrRangeMin;
+    [SerializeField] private int objNbrRangeMax;
+    [SerializeField] private List<KitchenObject> kitchenObjects;
 
     private void Start()
     {
         currentShelf = 0;
+        kitchenObjects = new List<KitchenObject>();
+        
+        foreach (var obj in Resources.LoadAll("Objects/KitchenObjects", typeof(KitchenObject)))
+        {
+            kitchenObjects.Add((KitchenObject) obj);
+        }
+    }
+
+    public void CreateShelves()
+    {
+        foreach (var shelf in transform.GetComponentsInChildren<Shelf>())
+        {
+            Destroy(shelf);
+        }
+        
+        float randomShelfNbr = Random.Range(shelfRangeMin, shelfRangeMax);
+        
+        for (int i = 0; i < randomShelfNbr; i++)
+        {
+            Shelf shelf = gameObject.AddComponent<Shelf>();
+            shelf.index = i;
+        }
+        
+        foreach (var shelf in transform.GetComponentsInChildren<Shelf>())
+        {
+            int randomObjectNbr = Random.Range(objNbrRangeMin, objNbrRangeMax);
+            
+            for (int j = 0; j < randomObjectNbr; j++)
+            {
+                int randomObjectIndex = Random.Range(0, kitchenObjects.Count - 1);
+                shelf.AddObject(kitchenObjects[randomObjectIndex]);
+            }
+        }
     }
 
     private void GetShelves()

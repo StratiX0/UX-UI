@@ -284,8 +284,18 @@ public class Player : MonoBehaviour
             {
                 Highlight(hit.transform.gameObject, false);
                 storageCanvas.gameObject.SetActive(true);
-                hit.transform.GetComponent<Furniture>().ClearUi();
-                hit.transform.GetComponent<Furniture>().UpdateMenu();
+
+                Furniture furniture = hit.transform.GetComponent<Furniture>();
+                
+                furniture.ClearUi();
+                
+                if (furniture.isMagic)
+                {
+                    furniture.CreateShelves();
+                }
+                furniture.UpdateMenu();
+                
+                
                 inMenu = true;
             }
         }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7615084664826161615}
   - component: {fileID: 2002784500667828502}
   - component: {fileID: 3934224398742704133}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: kettle_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5387451211272977158}
   - component: {fileID: 8980341833916047480}
   - component: {fileID: 7457514721691807915}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: kettle_Base_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 4945957723513127039}
   - component: {fileID: 4452082944645416373}
   - component: {fileID: 3773491238925816729}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: kettle_Base_Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

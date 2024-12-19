@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5049614044614531155}
   - component: {fileID: 4391231936650332987}
   - component: {fileID: 7351673230831431497}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: teapot_Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2689238057169071205}
   - component: {fileID: 4761026849702010013}
   - component: {fileID: -7166657555163851805}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: teapot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

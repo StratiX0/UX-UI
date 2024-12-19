@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2311347245453031596}
   - component: {fileID: 717437641087018979}
   - component: {fileID: 9017053903950466704}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: teapot_Double_Handle_p
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8633799507586586252}
   - component: {fileID: 3283276268211401406}
   - component: {fileID: 5473564133734020460}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: teapot_Double
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 4117260965943204466}
   - component: {fileID: 2828152336595091404}
   - component: {fileID: 4857532255193717260}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: teapot_Double_Lid_p
   m_TagString: Untagged
   m_Icon: {fileID: 0}

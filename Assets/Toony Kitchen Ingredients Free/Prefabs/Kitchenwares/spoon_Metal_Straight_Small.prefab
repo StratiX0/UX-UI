@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6439120419804967957}
   - component: {fileID: 125888562224914874}
   - component: {fileID: 4760323489940653349}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: spoon_Metal_Straight_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}

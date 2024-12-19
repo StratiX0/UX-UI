@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6164808807380622953}
   - component: {fileID: 2287969338634348118}
   - component: {fileID: 3026883607347108984}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: oil_Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3401045375776914201}
   - component: {fileID: 1776211481201508779}
   - component: {fileID: 6016681481524526413}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: switch_Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 775154981512651963}
   - component: {fileID: 8832640312167753271}
   - component: {fileID: 5598629110961834422}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: oil_Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 3448283146680794420}
   - component: {fileID: 7230444516911955262}
   - component: {fileID: 7858768108059358108}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 5080914242257674375}
   - component: {fileID: 3927195895159915678}
   - component: {fileID: 4484011508046915037}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 8206913437735346561}
   - component: {fileID: 7842907761870798447}
   - component: {fileID: 5675409483392701470}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 2666629655434288908}
   - component: {fileID: 5799321760744006540}
   - component: {fileID: 2271165689401507575}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: deepfryer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

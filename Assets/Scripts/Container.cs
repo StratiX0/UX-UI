@@ -20,22 +20,15 @@ public class Container : MonoBehaviour, IPointerDownHandler
         Clearing
     }
 
-    private void Awake()
+    private void Start()
     {
-        if (player == null)
-        {
-            player = Player.Instance;
-        }
+        player = Player.Instance;
+        canvas = GameObject.Find("ContainerCanvas").GetComponent<Canvas>();
         
         if (canvas != null)
         {
             GetButtons();
         }
-    }
-
-    private void Start()
-    {
-        player = Player.Instance;
     }
 
     private void GetButtons()
