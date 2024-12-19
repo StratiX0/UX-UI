@@ -355,6 +355,11 @@ public class Player : MonoBehaviour
         LMotion.Create(0f, 0.04f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
     }
     
+    public void OpenMenu()
+    {
+        inMenu = true;
+    }
+    
     public void CloseMenu()
     {
         inMenu = false;

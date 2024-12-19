@@ -24,6 +24,8 @@ public class Book : MonoBehaviour
         currentRecipe = GetRecipesByIndex(0);
         
         FormatRecipe(currentRecipe);
+        
+        Debug.Log("Persistent Data Path: " + Application.persistentDataPath);
     }
 
     private void AddRecipe(string title, string ingredients, string desc)
@@ -121,11 +123,11 @@ public class Book : MonoBehaviour
     
     private void LoadRecipe()
     {
-        TextAsset jsonFile = Resources.Load<TextAsset>("Recipes");
-        if (jsonFile != null)
+        string filePath = Path.Combine(Application.persistentDataPath, "Recipes.json");
+        if (File.Exists(filePath))
         {
-            string json = jsonFile.text;
-            List<RecipeData> recipes = JsonConvert.DeserializeObject<List<RecipeData>>(json);
+            string jsonFile = File.ReadAllText(filePath);
+            List<RecipeData> recipes = JsonConvert.DeserializeObject<List<RecipeData>>(jsonFile);
 
             foreach (var recipe in recipes)
             {
@@ -135,7 +137,12 @@ public class Book : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Le fichier Recipes.json est introuvable dans le dossier Resources.");
+            TextAsset jsonFile = Resources.Load<TextAsset>("Recipes");
+            if (jsonFile != null)
+            {
+                File.WriteAllText(filePath, jsonFile.text);
+                LoadRecipe(); // Appeler à nouveau la fonction
+            }
         }
     }
 
