@@ -61,6 +61,9 @@ public class Furniture : MonoBehaviour
             Instantiate(tabPrefab, tabsParent.transform);
         }
         
+        GameObject.Find("StoreLeftHand").GetComponent<StoreHandButton>().furniture = this;
+        GameObject.Find("StoreRightHand").GetComponent<StoreHandButton>().furniture = this;
+        
         UpdateGrid(0);
     }
     
@@ -102,5 +105,18 @@ public class Furniture : MonoBehaviour
         descriptionPanel.transform.Find("Icon").gameObject.SetActive(false);
         descriptionPanel.transform.Find("ObjectName").GetComponent<TextMeshProUGUI>().text = "";
         descriptionPanel.transform.Find("Description").GetComponent<TextMeshProUGUI>().text = "";
+    }
+    
+    public void AddObjectToShelf(KitchenObject kitchenObject)
+    {
+        foreach (Shelf shelf in transform.GetComponentsInChildren<Shelf>())
+        {
+            if (shelf.index == currentShelf)
+            {
+                shelf.AddObject(kitchenObject);
+            }
+        }
+        
+        UpdateMenu();
     }
 }

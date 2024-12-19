@@ -24,8 +24,6 @@ public class Book : MonoBehaviour
         currentRecipe = GetRecipesByIndex(0);
         
         FormatRecipe(currentRecipe);
-        
-        Debug.Log("Persistent Data Path: " + Application.persistentDataPath);
     }
 
     private void AddRecipe(string title, string ingredients, string desc)
@@ -141,7 +139,7 @@ public class Book : MonoBehaviour
             if (jsonFile != null)
             {
                 File.WriteAllText(filePath, jsonFile.text);
-                LoadRecipe(); // Appeler à nouveau la fonction
+                LoadRecipe();
             }
         }
     }

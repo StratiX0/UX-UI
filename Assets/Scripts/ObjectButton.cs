@@ -11,8 +11,6 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     public Furniture furniture;
     public KitchenObject kitchenObject;
     public GameObject descriptionPanel;
-    public GameObject collectButton;
-    public GameObject storeButton;
     public GameObject leftHandButton;
     public GameObject rightHandButton;
     private Sprite icon;
@@ -25,8 +23,6 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         player = GameObject.Find("Player").GetComponent<Player>();
         leftHandButton = GameObject.Find("StoreLeftHand");
         rightHandButton = GameObject.Find("StoreRightHand");
-        collectButton = GameObject.Find("Collect");
-        storeButton = GameObject.Find("Store");
         gridshelf = GameObject.Find("GridShelf");
         descriptionPanel = GameObject.Find("DescriptionPanel");
         nameText = descriptionPanel.transform.Find("ObjectName").GetComponent<TextMeshProUGUI>();
@@ -45,41 +41,43 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     {
         parent.GetComponent<LayoutElement>().ignoreLayout = true;
         parent.GetComponent<RectTransform>().position = Input.mousePosition;
-        leftHandButton.GetComponent<Image>().color = Color.green;
-        rightHandButton.GetComponent<Image>().color = Color.green;
+
+        leftHandButton.GetComponent<Image>().color = Player.Instance.objectsInHands[0] == null ? Color.green : Color.red;
+        
+        rightHandButton.GetComponent<Image>().color = Player.Instance.objectsInHands[1] == null ? Color.green : Color.red;
     }
     
     private bool IsMouseOverParent()
     {
-        if (gridshelf == null) return false; // Vérifie si le parent existe
+        if (gridshelf == null) return false;
 
         RectTransform gridshelftRect = gridshelf.GetComponent<RectTransform>();
-        if (gridshelftRect == null) return false; // Vérifie si le parent a un RectTransform
+        if (gridshelftRect == null) return false;
 
         Vector2 localMousePosition = gridshelftRect.InverseTransformPoint(Input.mousePosition);
-        return gridshelftRect.rect.Contains(localMousePosition); // Vérifie si la souris est dans les limites du RectTransform
+        return gridshelftRect.rect.Contains(localMousePosition);
     }
     
     private bool IsMouseOverLeftHand()
     {
-        if (leftHandButton == null) return false; // Vérifie si le parent existe
+        if (leftHandButton == null) return false;
 
         RectTransform leftHandRect = leftHandButton.GetComponent<RectTransform>();
-        if (leftHandRect == null) return false; // Vérifie si le parent a un RectTransform
+        if (leftHandRect == null) return false;
 
         Vector2 localMousePosition = leftHandRect.InverseTransformPoint(Input.mousePosition);
-        return leftHandRect.rect.Contains(localMousePosition); // Vérifie si la souris est dans les limites du RectTransform
+        return leftHandRect.rect.Contains(localMousePosition);
     }
     
     private bool IsMouseOveRightHand()
     {
-        if (rightHandButton == null) return false; // Vérifie si le parent existe
-
+        if (rightHandButton == null) return false;
+        
         RectTransform rightHandRect = rightHandButton.GetComponent<RectTransform>();
-        if (rightHandRect == null) return false; // Vérifie si le parent a un RectTransform
+        if (rightHandRect == null) return false;
 
         Vector2 localMousePosition = rightHandRect.InverseTransformPoint(Input.mousePosition);
-        return rightHandRect.rect.Contains(localMousePosition); // Vérifie si la souris est dans les limites du RectTransform
+        return rightHandRect.rect.Contains(localMousePosition);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -92,8 +90,6 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         
         MouseOrderElements();
         AddToHands();
-
-        Debug.Log("End Drag");
     }
     
     private void AddToHands()
@@ -109,7 +105,6 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
                     shelf.RemoveObject(kitchenObject);
                 }
             }
-            // furniture.shelves[furniture.currentShelf].objects.Remove(kitchenObject);
             furniture.gridElements.Remove(transform.parent.gameObject);
             Destroy(parent);
         }

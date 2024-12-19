@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using LitMotion;
-using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -363,5 +362,11 @@ public class Player : MonoBehaviour
     public void CloseMenu()
     {
         inMenu = false;
+    }
+    
+    public void RemoveObjectFromHand(int hand)
+    {
+        Destroy(objectsInHands[hand]);
+        objectsInHands[hand] = null;
     }
 }

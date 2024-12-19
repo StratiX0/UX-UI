@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 61952067907521354}
   - component: {fileID: -8647591329611690530}
   - component: {fileID: 2042365343709594916}
+  - component: {fileID: 1259176457996420857}
   m_Layer: 6
   m_Name: Tomato
   m_TagString: Untagged
@@ -135,6 +136,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1259176457996420857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5901808493792163828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1addfcacad3a24f4a9552a189787fbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kitchenObject: {fileID: 11400000, guid: ff3149ae3a6d35d419db94052f1849c8, type: 2}
 --- !u!1 &7412282423217794750
 GameObject:
   m_ObjectHideFlags: 0

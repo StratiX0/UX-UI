@@ -47,8 +47,8 @@ public class Container : MonoBehaviour
             button.onClick.AddListener(() => OnButtonClicked(button));
         }
         
-        buttons.Where(name => name.name == "AddLeftHandButton").FirstOrDefault().gameObject.SetActive(false);
-        buttons.Where(name => name.name == "AddRightHandButton").FirstOrDefault().gameObject.SetActive(false);
+        // buttons.Where(name => name.name == "AddLeftHandButton").FirstOrDefault().gameObject.SetActive(false);
+        // buttons.Where(name => name.name == "AddRightHandButton").FirstOrDefault().gameObject.SetActive(false);
     }
 
     private void OnButtonClicked(Button button)

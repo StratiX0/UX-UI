@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 5283123229937692164}
   - component: {fileID: -384399661913247386}
   - component: {fileID: -5139304191621036207}
+  - component: {fileID: 2983314306980974878}
   m_Layer: 6
   m_Name: LettuceIceberg
   m_TagString: Untagged
@@ -304,6 +305,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2983314306980974878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284953982482233977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1addfcacad3a24f4a9552a189787fbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kitchenObject: {fileID: 11400000, guid: 0edc320e47a235a498f508595c71a66b, type: 2}
 --- !u!1 &4200578862663689088
 GameObject:
   m_ObjectHideFlags: 0
