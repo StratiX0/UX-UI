@@ -35,11 +35,7 @@ public class Container : MonoBehaviour
 
     private void GetButtons()
     {
-        if (canvas == null)
-        {
-            Debug.LogError("Canvas is not set.");
-            return;
-        }
+        if (canvas == null) return;
 
         buttons = new List<Button>(canvas.GetComponentsInChildren<Button>());
         foreach (Button button in buttons)
@@ -53,7 +49,6 @@ public class Container : MonoBehaviour
 
     private void OnButtonClicked(Button button)
     {
-        Debug.Log("Button " + button.name + " clicked.");
         switch (button.name)
         {
             case "AddButton":
@@ -77,18 +72,13 @@ public class Container : MonoBehaviour
                 player.objectsInHands[1] = null;
                 break;
             default:
-                Debug.Log("No action defined for this button.");
                 break;
         }
     }
 
     private void AddObject(GameObject obj, bool isLeftHand)
     {
-        if (obj == null)
-        {
-            Debug.LogError("Object to add is null.");
-            return;
-        }
+        if (obj == null) return;
         
         obj.transform.SetParent(transform);
         obj.transform.position = transform.position;
@@ -108,11 +98,7 @@ public class Container : MonoBehaviour
 
     private void RemoveObject(GameObject obj)
     {
-        if (obj == null)
-        {
-            Debug.LogError("Object to remove is null.");
-            return;
-        }
+        if (obj == null) return;
 
         objectsInContainer.Remove(obj);
     }

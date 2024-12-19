@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
             
                 selectedObject = hit.transform.gameObject;
                 objectCanvas.gameObject.SetActive(true);
-                objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
+                objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0.75f));
                 objectCanvas.transform.rotation = Quaternion.LookRotation(objectCanvas.transform.position - Camera.main.transform.position);
                 inMenu = true;
             }
@@ -144,8 +144,7 @@ public class Player : MonoBehaviour
             if (isAnimating)
             {
                 selectedObject = null;
-                compMotionHandle.Cancel();
-                compMotionHandle.Clear();
+                StopHighlightAnimation();
                 highlightMat.SetFloat("_Thickness", 0);
                 isAnimating = false;
             }
@@ -195,7 +194,8 @@ public class Player : MonoBehaviour
 
                 selectedObject = hit.transform.gameObject;
                 containerCanvas.gameObject.SetActive(true);
-                containerCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
+                // containerCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0.5f));
+                containerCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0.75f));
                 containerCanvas.transform.rotation = Quaternion.LookRotation(containerCanvas.transform.position - Camera.main.transform.position);
                 inMenu = true;
             }
@@ -210,8 +210,7 @@ public class Player : MonoBehaviour
             if (isAnimating)
             {
                 selectedObject = null;
-                compMotionHandle.Cancel();
-                compMotionHandle.Clear();
+                StopHighlightAnimation();
                 highlightMat.SetFloat("_Thickness", 0);
                 isAnimating = false;
             }
@@ -353,6 +352,14 @@ public class Player : MonoBehaviour
     {
         LMotion.Create(0f, 0.04f, 1f).WithLoops(-1, LoopType.Yoyo).Bind(x => highlightMat.SetFloat("_Thickness", x)).AddTo(compMotionHandle);
     }
+
+    public void StopHighlightAnimation()
+    {
+        if (highlightMat == null) return;
+        highlightMat.SetFloat("_Thickness", 0f);
+        compMotionHandle.Cancel();
+        compMotionHandle.Clear();
+    }
     
     public void OpenMenu()
     {
@@ -361,6 +368,7 @@ public class Player : MonoBehaviour
     
     public void CloseMenu()
     {
+        StopHighlightAnimation();
         inMenu = false;
     }
     
