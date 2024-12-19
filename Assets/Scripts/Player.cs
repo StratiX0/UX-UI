@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     
+    private Rigidbody rb;
     [Header("Input Actions")]
     [SerializeField] private InputActionReference movement;
     [SerializeField] private InputActionReference rotation;
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -81,13 +83,18 @@ public class Player : MonoBehaviour
             GetInputs();
             Move();
             SelectObject();
-            ContainerManagement();
+            // ContainerManagement();
             StorageManagement();
         }
         
         if (isPlacingObj)
         {
             PlaceObject(placingObjIndex);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 
@@ -100,8 +107,12 @@ public class Player : MonoBehaviour
     
     private void Move()
     {
-        transform.Translate(Vector3.forward * (move * speed * Time.deltaTime));
-        transform.Rotate(Vector3.up * (rotate * rotationSpeed * Time.deltaTime));
+        Vector3 targetVelocity = transform.forward * (move * speed);
+        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime * 5f);
+
+        Quaternion targetRotation = Quaternion.Euler(0, rotate * rotationSpeed, 0);
+        // transform.rotation = Quaternion.Lerp(transform.rotation, transform.rotation * targetRotation, 5f);
+        transform.Rotate(transform.up, rotationSpeed * rotate * Time.fixedDeltaTime);
     }
     
     private void SelectObject()
@@ -110,15 +121,15 @@ public class Player : MonoBehaviour
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
     
-        bool hitGrabbable = Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Grabbable"));
-        bool hitNothing = !hitGrabbable && !Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Grabbable"));
-
+        bool hitGrabbable = Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Grabbable"));
+        bool hitNothing = !hitGrabbable && !Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Grabbable"));
+    
         if (hitGrabbable && !inMenu)
         {
             Highlight(hit.transform.gameObject, true);
             highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
             selectedObjectPos = hit.transform.position;
-
+    
             if (click > 0)
             {
                 if (!isAnimating)
@@ -126,11 +137,14 @@ public class Player : MonoBehaviour
                     CreateHighlightAnimation();
                     isAnimating = true;
                 }
-            
+    
                 selectedObject = hit.transform.gameObject;
                 objectCanvas.gameObject.SetActive(true);
+                containerCanvas.gameObject.SetActive(false);
                 objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0.75f));
                 objectCanvas.transform.rotation = Quaternion.LookRotation(objectCanvas.transform.position - Camera.main.transform.position);
+                containerCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0.75f));
+                containerCanvas.transform.rotation = Quaternion.LookRotation(containerCanvas.transform.position - Camera.main.transform.position);
                 inMenu = true;
             }
         }
@@ -138,7 +152,7 @@ public class Player : MonoBehaviour
         {
             Highlight(lastHoveredObject, false);
         }
-
+    
         if (Vector3.Distance(transform.position, selectedObjectPos) > 2f)
         {
             if (isAnimating)
@@ -175,10 +189,10 @@ public class Player : MonoBehaviour
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
-        bool hitContainer = Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Container"));
-        bool hitNothing = !hitContainer && !Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Container"));
+        bool hitContainer = Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Grabbable"));
+        bool container = hit.transform.CompareTag("Container");
 
-        if (hitContainer && !inMenu)
+        if (hitContainer && container && !inMenu)
         {
             Highlight(hit.transform.gameObject, true);
             highlightMat = hit.transform.GetComponent<MeshRenderer>().materials[1];
@@ -200,7 +214,7 @@ public class Player : MonoBehaviour
                 inMenu = true;
             }
         }
-        else if (hitNothing && hoveredObjectMats != null)
+        else if (!hitContainer && container && hoveredObjectMats != null)
         {
             Highlight(lastHoveredContainer, false);
         }
@@ -256,7 +270,7 @@ public class Player : MonoBehaviour
             objectsInHands[objIndex].transform.position = hit.point;
             objectsInHands[objIndex].transform.SetParent(null);
             objectsInHands[objIndex].layer = LayerMask.NameToLayer("Grabbable");
-            objectsInHands[objIndex].transform.localScale = Vector3.one;
+            objectsInHands[objIndex].transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             foreach (var child in objectsInHands[objIndex].transform.gameObject.GetComponentsInChildren<Transform>())
             {
                 child.gameObject.layer = LayerMask.NameToLayer("Grabbable");
@@ -274,7 +288,7 @@ public class Player : MonoBehaviour
         Vector2 mousePosition = InputSystem.GetDevice<Mouse>().position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         
-        if (Physics.Raycast(ray, out hit, 1.5f, LayerMask.GetMask("Storage")) && !inMenu)
+        if (Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Storage")) && !inMenu)
         {
             Highlight(hit.transform.gameObject, true);
             
@@ -300,7 +314,7 @@ public class Player : MonoBehaviour
             }
         }
         
-        else if (!Physics.Raycast(ray, out hit, 2f, LayerMask.GetMask("Storage")))
+        else if (!Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Storage")))
         {
             if (hoveredObjectMats != null)
             {
