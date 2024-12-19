@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LettuceIceberg
   m_EditorClassIdentifier: 
   objectName: Lettuce Iceberg
-  description: Bun made for burger sandwiches
+  description: Crisp and light, iceberg lettuce adds a fresh crunch to any sandwich
+    or salad.
   prefab: {fileID: 3284953982482233977, guid: 8042a000a38181545a4668628b10f4e1, type: 3}
-  icon: {fileID: 21300000, guid: 7d31cc31eaf9d1546936b3ead4d235fe, type: 3}
+  icon: {fileID: 21300000, guid: b57165eb18859834e868d107bfc34526, type: 3}

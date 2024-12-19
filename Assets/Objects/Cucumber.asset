@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cucumber
   m_EditorClassIdentifier: 
   objectName: Cucumber
-  description: Aubergine, long and purple
+  description: Fresh and crisp, cucumbers add a refreshing crunch to salads or sandwiches.
   prefab: {fileID: 371548093751397130, guid: 0a85942a1f0bf814aaa05ef6bd2b6094, type: 3}
-  icon: {fileID: 21300000, guid: b0fec8a059f48694ab18566e04eb1e7d, type: 3}
+  icon: {fileID: 21300000, guid: 0f160f01aba980c4d97d6c444d1e651c, type: 3}

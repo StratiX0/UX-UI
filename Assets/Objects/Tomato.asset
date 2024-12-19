@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tomato
   m_EditorClassIdentifier: 
   objectName: Tomato
-  description: Bun made for burger sandwiches
+  description: Juicy and tangy, tomatoes are essential for salads, sandwiches, and
+    sauces, offering vibrant color and fresh flavor.
   prefab: {fileID: 5901808493792163828, guid: c1da3a46fde94f540a3e22ce83cae035, type: 3}
-  icon: {fileID: 21300000, guid: 7d31cc31eaf9d1546936b3ead4d235fe, type: 3}
+  icon: {fileID: 21300000, guid: fd368fe4204788848a2ad256b43b7a96, type: 3}

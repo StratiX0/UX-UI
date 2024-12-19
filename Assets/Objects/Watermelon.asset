@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Watermelon
   m_EditorClassIdentifier: 
   objectName: Watermelon
-  description: Bun made for burger sandwiches
+  description: Sweet, juicy, and hydrating, watermelon is a refreshing fruit that
+    adds a burst of flavor to any dish or snack.
   prefab: {fileID: 8435440963665084209, guid: de1a8f0f25b4c4a4f9c1f1287a116a78, type: 3}
-  icon: {fileID: 21300000, guid: 7d31cc31eaf9d1546936b3ead4d235fe, type: 3}
+  icon: {fileID: 21300000, guid: dd3b0158d99e80d449ccca5575499b6a, type: 3}

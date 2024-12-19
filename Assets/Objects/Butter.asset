@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Butter
   m_EditorClassIdentifier: 
   objectName: Butter
-  description: Aubergine, long and purple
+  description: Rich and creamy, butter adds smoothness and flavor to your dishes,
+    perfect for cooking or spreading.
   prefab: {fileID: 8645542679437106049, guid: 21799d3069c28f341a28a8c1ea04b268, type: 3}
-  icon: {fileID: 21300000, guid: b0fec8a059f48694ab18566e04eb1e7d, type: 3}
+  icon: {fileID: 21300000, guid: 137304246025410449933f957521e58a, type: 3}

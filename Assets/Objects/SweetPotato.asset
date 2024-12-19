@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SweetPotato
   m_EditorClassIdentifier: 
   objectName: Sweet Potato
-  description: Bun made for burger sandwiches
+  description: Naturally sweet and hearty, sweet potatoes can be roasted, mashed,
+    or fried, adding a delicious twist to any meal.
   prefab: {fileID: 4918527333481681219, guid: da7778953b446b342a66ee2b094f22e8, type: 3}
-  icon: {fileID: 21300000, guid: 7d31cc31eaf9d1546936b3ead4d235fe, type: 3}
+  icon: {fileID: 21300000, guid: 66fa44e6fe814db44af51368ee105ee0, type: 3}

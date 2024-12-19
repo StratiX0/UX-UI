@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   objectName: Carrot
-  description: Aubergine, long and purple
+  description: Crunchy and vibrant, carrots bring a natural sweetness and a pop of
+    color to your recipes.
   prefab: {fileID: 221025165036704325, guid: e1255878f883586479203233d46a031f, type: 3}
-  icon: {fileID: 21300000, guid: b0fec8a059f48694ab18566e04eb1e7d, type: 3}
+  icon: {fileID: 21300000, guid: a999041c50e73eb48b2dba829115a84c, type: 3}
