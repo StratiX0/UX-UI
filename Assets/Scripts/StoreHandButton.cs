@@ -11,6 +11,11 @@ public class StoreHandButton : MonoBehaviour, IPointerDownHandler
     public Furniture furniture;
     public int handIndex;
 
+    private void Start()
+    {
+        gridShelf = GameObject.Find("GridShelf");
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         StoreObjectInHand();
@@ -18,7 +23,7 @@ public class StoreHandButton : MonoBehaviour, IPointerDownHandler
     
     private void StoreObjectInHand()
     {
-        if (Player.Instance.objectsInHands[handIndex] != null)
+        if (Player.Instance.objectsInHands[handIndex] != null && StoreButton.Instance.isSelected)
         {
             furniture.AddObjectToShelf(Player.Instance.objectsInHands[handIndex].GetComponent<StorableObject>().kitchenObject);
             Player.Instance.RemoveObjectFromHand(handIndex);

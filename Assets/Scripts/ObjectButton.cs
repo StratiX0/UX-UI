@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
@@ -17,6 +18,7 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI descriptionText;
     public bool isSelected;
+    private Vector3 initialPosition;
 
     private void Start()
     {
@@ -29,22 +31,33 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
         descriptionText = descriptionPanel.transform.Find("Description").GetComponent<TextMeshProUGUI>();
         DisplayIcon();
         isSelected = false;
+        initialPosition = parent.transform.position;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         DisplayDescription();
         isSelected = true;
+        foreach (Transform button in gridshelf.GetComponentInChildren<Transform>())
+        {
+            if (button.GetComponentInChildren<ObjectButton>().isSelected && button != transform)
+            {
+                button.GetComponentInChildren<ObjectButton>().isSelected = false;
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (Vector3.Distance(initialPosition, parent.transform.position) < 100) return;
+        
         parent.GetComponent<LayoutElement>().ignoreLayout = true;
         parent.GetComponent<RectTransform>().position = Input.mousePosition;
-
+        
         leftHandButton.GetComponent<Image>().color = Player.Instance.objectsInHands[0] == null ? Color.green : Color.red;
         
         rightHandButton.GetComponent<Image>().color = Player.Instance.objectsInHands[1] == null ? Color.green : Color.red;
+        
     }
     
     private bool IsMouseOverParent()
@@ -192,5 +205,10 @@ public class ObjectButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     {
         icon = kitchenObject.GetIcon();
         transform.GetComponentInChildren<Image>().sprite = icon;
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        throw new System.NotImplementedException();
     }
 }

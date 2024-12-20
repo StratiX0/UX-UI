@@ -25,6 +25,6 @@ public class Stove : MonoBehaviour
     {
         float value = temperatureSlider.value;
         temperature = (int)(maxTemperature * value);
-        temperatureText.text = temperature.ToString();
+        temperatureText.text = $"{temperature.ToString()} °C";
     }
 }

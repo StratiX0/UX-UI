@@ -88,9 +88,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dc7e9bc57ce8d409d37106b669662a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  gridshelf: {fileID: 0}
   parent: {fileID: 3246897937635985530}
+  furniture: {fileID: 0}
   kitchenObject: {fileID: 0}
   descriptionPanel: {fileID: 0}
+  leftHandButton: {fileID: 0}
+  rightHandButton: {fileID: 0}
   isSelected: 0
 --- !u!1 &3246897937635985530
 GameObject:
