@@ -13589,7 +13589,7 @@ MonoBehaviour:
   shelfRangeMin: 1
   shelfRangeMax: 3
   objNbrRangeMin: 1
-  objNbrRangeMax: 30
+  objNbrRangeMax: 60
   kitchenObjectList: {fileID: 11400000, guid: b2d2dc85219d89247911a417b4fa87fd, type: 2}
 --- !u!1 &1248318826
 GameObject:
