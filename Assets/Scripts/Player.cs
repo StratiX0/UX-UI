@@ -363,7 +363,10 @@ public class Player : MonoBehaviour
 
     private void ApplyHighlight(GameObject obj, bool highlight)
     {
-        foreach (Material mat in obj.GetComponentInChildren<MeshRenderer>().materials)
+        var renderer = obj.GetComponentInChildren<MeshRenderer>();
+        if (renderer == null) return;
+
+        foreach (Material mat in renderer.materials)
         {
             if (highlight)
             {

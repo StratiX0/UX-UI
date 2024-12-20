@@ -74,6 +74,8 @@ public class StoreButton : MonoBehaviour, IPointerDownHandler
         isSelected = false;
         leftHandButton.GetComponent<Image>().color = Color.white;
         rightHandButton.GetComponent<Image>().color = Color.white;
+        storeFromText.GameObject().SetActive(false);
+        storeFromText.color = new Color(255, 255, 255, 1);
         compMotionHandle.Cancel();
         compMotionHandle.Clear();
     }
