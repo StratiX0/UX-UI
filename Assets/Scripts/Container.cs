@@ -78,7 +78,8 @@ public class Container : MonoBehaviour, IPointerDownHandler
         
         GameObject newItem = Instantiate(obj, transform);
         newItem.transform.position = transform.position;
-        newItem.gameObject.SetActive(false);
+        newItem.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        newItem.SetActive(false);
 
         objectsInContainer.Add(newItem);
 

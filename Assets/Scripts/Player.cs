@@ -140,6 +140,10 @@ public class Player : MonoBehaviour
     
                 selectedObject = hit.transform.gameObject;
                 objectCanvas.gameObject.SetActive(true);
+                if (hit.transform.CompareTag("Ingredients"))
+                {
+                    GameObject.Find("AddObjects").SetActive(false);
+                }
                 containerCanvas.gameObject.SetActive(false);
                 objectCanvas.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0.75f));
                 objectCanvas.transform.rotation = Quaternion.LookRotation(objectCanvas.transform.position - Camera.main.transform.position);
@@ -276,6 +280,7 @@ public class Player : MonoBehaviour
                 child.gameObject.layer = LayerMask.NameToLayer("Grabbable");
             }
             objectsInHands[objIndex].GetComponent<Rigidbody>().isKinematic = false;
+            objectsInHands[objIndex].SetActive(true);
             objectsInHands[objIndex] = null;
             isPlacingObj = false;
             placingMenus[objIndex].SetActive(false);
